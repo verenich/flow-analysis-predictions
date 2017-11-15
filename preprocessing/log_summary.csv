@@ -1,0 +1,2 @@
+log,avg_unique_timestamp_per_trace,avg_unique_timestamp_global,cases_longer_5,timestamp_0_after_5,cases_longer_20,timestamp_0_after_20
+hospital_billing.csv, 1.000, 0.991, 66473, 0, 77, 0
