@@ -63,7 +63,8 @@ with open(outfile, 'w') as fout:
     # else:
     #     dtypes[dataset_manager.label_col] = "str"  # if classification, preserve and do not interpret dtype of label
 
-    data = pd.read_csv(os.path.join(home_dir, logs_dir, train_file), sep=",", dtype=dtypes)
+    data = pd.read_csv(os.path.join(home_dir, logs_dir, train_file), sep=";", dtype=dtypes)
+    data = data.head(30000)
     data[dataset_manager.timestamp_col] = pd.to_datetime(data[dataset_manager.timestamp_col])
 
     # split data into training and validation sets
@@ -75,7 +76,7 @@ with open(outfile, 'w') as fout:
     if dataset_ref == "BPI2012W":
         max_prefix_length = 10
     else:
-        max_prefix_length = 7
+        max_prefix_length = 6
     #max_prefix_length = min(6, dataset_manager.get_pos_case_length_quantile(data, 0.95))
     del data
 

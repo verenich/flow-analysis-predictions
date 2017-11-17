@@ -63,7 +63,8 @@ with open(outfile, 'w') as fout:
 
     dtypes[label_col] = "float"  # remaining time should be float
 
-    data = pd.read_csv(os.path.join(home_dir, logs_dir, train_file), sep=",", dtype=dtypes)
+    data = pd.read_csv(os.path.join(home_dir, logs_dir, train_file), sep=";", dtype=dtypes)
+    data = data.head(30000)
     data[dataset_manager.timestamp_col] = pd.to_datetime(data[dataset_manager.timestamp_col])
 
     # add label column to the dataset if it does not exist yet
@@ -72,7 +73,7 @@ with open(outfile, 'w') as fout:
         data = data.groupby(dataset_manager.case_id_col, as_index=False).apply(dataset_manager.add_remtime)
 
     # split data into training and validation sets
-    train, test = dataset_manager.split_data(data, train_ratio=0.6601)
+    train, test = dataset_manager.split_data(data, train_ratio=0.660)
     # train = train.sort_values(dataset_manager.timestamp_col, ascending=True, kind='mergesort')
 
     # consider prefix lengths until 90th percentile of case length
