@@ -40,6 +40,7 @@
       <w>.GlobalEnv</w>
       <w>.I</w>
       <w>.Internal</w>
+      <w>.JULIAN</w>
       <w>.Last.value</w>
       <w>.Library</w>
       <w>.Library.site</w>
@@ -495,6 +496,7 @@
       <w>.__C__tSNE</w>
       <w>.__C__table</w>
       <w>.__C__tanhkernel</w>
+      <w>.__C__timeDate</w>
       <w>.__C__traceable</w>
       <w>.__C__tradeLog</w>
       <w>.__C__ts</w>
@@ -513,6 +515,7 @@
       <w>.axisPars</w>
       <w>.basis</w>
       <w>.bincode</w>
+      <w>.by2seconds</w>
       <w>.cache_class</w>
       <w>.chart.theme</w>
       <w>.checkMFClasses</w>
@@ -525,6 +528,7 @@
       <w>.compute.unnormalized.roc.curve</w>
       <w>.construct.linefunct</w>
       <w>.data</w>
+      <w>.day.of.week</w>
       <w>.debugMethod</w>
       <w>.decode_numeric_version</w>
       <w>.define.environments</w>
@@ -535,14 +539,19 @@
       <w>.doTracePrint</w>
       <w>.downsample</w>
       <w>.dynLibs</w>
+      <w>.easter</w>
+      <w>.easterSunday</w>
       <w>.encode_numeric_version</w>
+      <w>.endpoints</w>
       <w>.expand_R_libs_env_var</w>
       <w>.farg</w>
       <w>.fcnnls</w>
       <w>.filled.contour</w>
       <w>.find.package</w>
       <w>.format.zeros</w>
+      <w>.formatFinCenter</w>
       <w>.garg</w>
+      <w>.genDaylightSavingTime</w>
       <w>.get.arglist</w>
       <w>.getNamespace</w>
       <w>.getNamespaceInfo</w>
@@ -571,6 +580,7 @@
       <w>.isMethodDebugged</w>
       <w>.isMethodsDispatchOn</w>
       <w>.isOpen</w>
+      <w>.isPOSIX</w>
       <w>.jaddClassPath</w>
       <w>.jaddLibrary</w>
       <w>.jarray</w>
@@ -630,11 +640,13 @@
       <w>.jsimplify</w>
       <w>.jstrVal</w>
       <w>.jthrow</w>
+      <w>.julian</w>
       <w>.junserialize</w>
       <w>.jzeroRef</w>
       <w>.kappa_tri</w>
       <w>.knownS3Generics</w>
       <w>.kronecker</w>
+      <w>.last.of.nday</w>
       <w>.leap.seconds</w>
       <w>.libPaths</w>
       <w>.lm.fit</w>
@@ -646,8 +658,13 @@
       <w>.mergeExportMethods</w>
       <w>.mergeImportMethods</w>
       <w>.methodsNamespace</w>
+      <w>.midnightStandard</w>
+      <w>.month.day.year</w>
       <w>.nknots.smspl</w>
       <w>.noGenerics</w>
+      <w>.nth.of.nday</w>
+      <w>.on.or.after</w>
+      <w>.on.or.before</w>
       <w>.packageStartupMessage</w>
       <w>.packages</w>
       <w>.parseISO8601</w>
@@ -709,12 +726,16 @@
       <w>.row_names_info</w>
       <w>.sarg</w>
       <w>.saveRDS</w>
+      <w>.sdate</w>
+      <w>.sday.of.week</w>
       <w>.select.args</w>
       <w>.select.prefix</w>
       <w>.selectSuperClasses</w>
       <w>.set_row_names</w>
       <w>.signalSimpleWarning</w>
       <w>.signflip</w>
+      <w>.sjulian</w>
+      <w>.sleap.year</w>
       <w>.slice.run</w>
       <w>.slotNames</w>
       <w>.standard_regexps</w>
@@ -722,6 +743,9 @@
       <w>.subset</w>
       <w>.subset.xts</w>
       <w>.subset2</w>
+      <w>.subsetByPython</w>
+      <w>.subsetBySpan</w>
+      <w>.subsetCode</w>
       <w>.subset_xts</w>
       <w>.traceback</w>
       <w>.tryResumeInterrupt</w>
@@ -732,6 +756,7 @@
       <w>.valueClassTest</w>
       <w>.wgtFUN.covComed</w>
       <w>.wgtFUN.covMcd</w>
+      <w>.whichFormat</w>
       <w>.xts</w>
       <w>A1_to_R1C1</w>
       <w>AES</w>
@@ -748,6 +773,7 @@
       <w>ASN1.encode</w>
       <w>ASN1.item</w>
       <w>ASN1.type</w>
+      <w>AST</w>
       <w>AUC</w>
       <w>AUC_lnK_R_NX</w>
       <w>AUTH_ANY</w>
@@ -760,22 +786,60 @@
       <w>AUTH_NTLM</w>
       <w>AUTH_NTLM_WB</w>
       <w>AUTH_ONLY</w>
+      <w>Abidjan</w>
+      <w>Accra</w>
       <w>Acf</w>
       <w>Ad</w>
+      <w>Adak</w>
+      <w>Addis_Ababa</w>
+      <w>Adelaide</w>
+      <w>Aden</w>
       <w>Adobe_glyphs</w>
+      <w>Advent1st</w>
+      <w>Advent2nd</w>
+      <w>Advent3rd</w>
+      <w>Advent4th</w>
       <w>AirPassengers</w>
+      <w>Algiers</w>
+      <w>AllSaints</w>
+      <w>AllSouls</w>
+      <w>Almaty</w>
+      <w>Amman</w>
+      <w>Amsterdam</w>
+      <w>Anadyr</w>
+      <w>Anchorage</w>
+      <w>Andorra</w>
+      <w>Anguilla</w>
       <w>Animals2</w>
+      <w>Annunciation</w>
+      <w>Antananarivo</w>
+      <w>Antigua</w>
+      <w>Apia</w>
       <w>App</w>
       <w>Appalachia</w>
+      <w>Aqtau</w>
+      <w>Aqtobe</w>
+      <w>Araguaina</w>
       <w>Arg</w>
       <w>Arima</w>
       <w>Arith</w>
       <w>Arthritis</w>
+      <w>Aruba</w>
+      <w>Ascension</w>
       <w>AsciiToInt</w>
+      <w>AshWednesday</w>
+      <w>Ashgabat</w>
+      <w>Asmara</w>
+      <w>AssumptionOfMary</w>
+      <w>Asuncion</w>
       <w>Asymbound</w>
       <w>AsympH0</w>
+      <w>Athens</w>
+      <w>Atikokan</w>
+      <w>Auckland</w>
       <w>Axis</w>
       <w>AxisSecondary</w>
+      <w>Azores</w>
       <w>BH</w>
       <w>BIC</w>
       <w>BJsales</w>
@@ -787,16 +851,50 @@
       <w>BTC</w>
       <w>BTY</w>
       <w>BYlogreg</w>
+      <w>Baghdad</w>
+      <w>Bahia</w>
+      <w>Bahrain</w>
+      <w>Baku</w>
+      <w>Bamako</w>
+      <w>Bangkok</w>
+      <w>Bangui</w>
+      <w>Banjul</w>
+      <w>Barbados</w>
       <w>Baseball</w>
+      <w>Beirut</w>
+      <w>Belem</w>
+      <w>Belgrade</w>
+      <w>Belize</w>
+      <w>Berlin</w>
+      <w>Bermuda</w>
+      <w>BirthOfVirginMary</w>
+      <w>Bishkek</w>
+      <w>Bissau</w>
+      <w>Blantyre</w>
+      <w>Boa_Vista</w>
+      <w>Bogota</w>
+      <w>Boise</w>
       <w>Bosco</w>
       <w>Box.test</w>
       <w>BoxCox</w>
       <w>BoxCox.ar</w>
       <w>BoxCox.lambda</w>
+      <w>BoxingDay</w>
+      <w>Bratislava</w>
+      <w>Brazzaville</w>
       <w>BregFix</w>
       <w>Brewery</w>
+      <w>Brisbane</w>
       <w>BrokenMarriage</w>
+      <w>Broken_Hill</w>
+      <w>Brunei</w>
+      <w>Brussels</w>
+      <w>Bucharest</w>
+      <w>Budapest</w>
+      <w>BuenosAires</w>
+      <w>Buenos_Aires</w>
       <w>Builder</w>
+      <w>Bujumbura</w>
       <w>Bundesliga</w>
       <w>Bundestag2005</w>
       <w>Butterfly</w>
@@ -806,7 +904,19 @@
       <w>C.Wochentag</w>
       <w>C.Wochentagkurz</w>
       <w>C.weekday</w>
+      <w>CACanadaDay</w>
+      <w>CACivicProvincialHoliday</w>
+      <w>CAFamilyDay</w>
+      <w>CALabourDay</w>
+      <w>CAThanksgivingDay</w>
+      <w>CAVictoriaDay</w>
+      <w>CET</w>
       <w>CFILE</w>
+      <w>CHAscension</w>
+      <w>CHBerchtoldsDay</w>
+      <w>CHConfederationDay</w>
+      <w>CHKnabenschiessen</w>
+      <w>CHSechselaeuten</w>
       <w>CI.CDF</w>
       <w>CIDFont</w>
       <w>CJ</w>
@@ -819,26 +929,59 @@
       <w>CRAN_memtest_notes</w>
       <w>CRAN_package_db</w>
       <w>CREF</w>
+      <w>CST</w>
       <w>CV</w>
       <w>CVST</w>
       <w>CVar</w>
+      <w>CaRemembranceDay</w>
+      <w>Cairo</w>
+      <w>Calcutta</w>
+      <w>Cambridge_Bay</w>
+      <w>Campo_Grande</w>
+      <w>Canary</w>
+      <w>Cancun</w>
+      <w>Cape_Verde</w>
+      <w>Caracas</w>
+      <w>Casablanca</w>
       <w>Cascades</w>
+      <w>Casey</w>
+      <w>Catamarca</w>
+      <w>Cayenne</w>
+      <w>Cayman</w>
       <w>Ccf</w>
+      <w>CelebrationOfHolyCross</w>
+      <w>Center</w>
+      <w>Ceuta</w>
+      <w>Chagos</w>
       <w>ChangeLog</w>
+      <w>Chatham</w>
+      <w>Chicago</w>
       <w>ChickEgg</w>
       <w>ChickWeight</w>
+      <w>Chihuahua</w>
+      <w>Chisinau</w>
+      <w>Choibalsan</w>
+      <w>Chongqing</w>
+      <w>ChristTheKing</w>
+      <w>Christmas</w>
+      <w>ChristmasDay</w>
+      <w>ChristmasEve</w>
       <w>Cl</w>
       <w>ClCl</w>
       <w>ClientValue</w>
       <w>Cmetric</w>
       <w>CoalMiners</w>
       <w>CobarOre</w>
+      <w>Cocos</w>
       <w>CoefMat</w>
       <w>CoefMat.multigroupfit</w>
       <w>Col</w>
+      <w>Colombo</w>
       <w>Combine</w>
+      <w>Comoro</w>
       <w>Compare</w>
       <w>Complex</w>
+      <w>Conakry</w>
       <w>Conj</w>
       <w>ContinuousRange</w>
       <w>Coord</w>
@@ -850,6 +993,10 @@
       <w>CoordQuickmap</w>
       <w>CoordSf</w>
       <w>CoordTrans</w>
+      <w>Copenhagen</w>
+      <w>Cordoba</w>
+      <w>CorpusChristi</w>
+      <w>Costa_Rica</w>
       <w>Cov</w>
       <w>CovClassic</w>
       <w>CovControlMMest</w>
@@ -869,40 +1016,81 @@
       <w>CovSest</w>
       <w>CrohnD</w>
       <w>Cstack_info</w>
+      <w>Cuiaba</w>
+      <w>Curacao</w>
       <w>CurlFeatureBits</w>
       <w>CurlGlobalBits</w>
       <w>CurlNetrc</w>
+      <w>Currie</w>
       <w>Curv</w>
       <w>D</w>
       <w>D1D2</w>
       <w>D1ss</w>
       <w>D1tr</w>
       <w>D2ss</w>
+      <w>DEAscension</w>
+      <w>DEChristmasEve</w>
+      <w>DECorpusChristi</w>
+      <w>DEGermanUnity</w>
+      <w>DENewYearsEve</w>
       <w>DEoptimR</w>
       <w>DLBCL</w>
       <w>DNase</w>
       <w>DRR</w>
+      <w>Dakar</w>
+      <w>Damascus</w>
       <w>DanishWelfare</w>
+      <w>Danmarkshavn</w>
+      <w>Dar_es_Salaam</w>
+      <w>Darwin</w>
+      <w>Davis</w>
+      <w>Dawson</w>
+      <w>Dawson_Creek</w>
       <w>Delt</w>
+      <w>Denver</w>
+      <w>Detroit</w>
+      <w>Dhaka</w>
       <w>Diff</w>
       <w>DiffusionMaps</w>
       <w>Digamma</w>
+      <w>Dili</w>
       <w>DiscreteRange</w>
+      <w>Djibouti</w>
+      <w>Dominica</w>
+      <w>Douala</w>
       <w>DrL</w>
+      <w>Dubai</w>
+      <w>Dublin</w>
+      <w>DumontDUrville</w>
       <w>Duplicated</w>
+      <w>Dushanbe</w>
+      <w>EET</w>
       <w>EIC</w>
       <w>ELISA</w>
       <w>EOF</w>
+      <w>EST</w>
+      <w>Easter</w>
+      <w>EasterMonday</w>
+      <w>EasterSunday</w>
+      <w>Eastern</w>
       <w>EbroCatchmentsCHE</w>
       <w>EbroDEM1000m</w>
       <w>EbroPPgis</w>
       <w>EbroPPtsMonthly</w>
+      <w>Edmonton</w>
+      <w>Efate</w>
       <w>EgaEnEstellaQts</w>
+      <w>Eirunepe</w>
+      <w>El_Aaiun</w>
+      <w>El_Salvador</w>
       <w>Employment</w>
       <w>Encoding</w>
       <w>EndRule</w>
+      <w>Enderbury</w>
       <w>Engel95</w>
+      <w>Epiphany</w>
       <w>EuStockMarkets</w>
+      <w>Eucla</w>
       <w>ExLinear</w>
       <w>ExNPreg</w>
       <w>ExNclus</w>
@@ -951,25 +1139,46 @@
       <w>FLXremoveComponent</w>
       <w>FLXreplaceParameters</w>
       <w>FNN</w>
+      <w>FRAllSaints</w>
+      <w>FRArmisticeDay</w>
+      <w>FRAscension</w>
+      <w>FRAssumptionVirginMary</w>
+      <w>FRBastilleDay</w>
+      <w>FRFetDeLaVictoire1945</w>
       <w>Facet</w>
       <w>FacetGrid</w>
       <w>FacetNull</w>
       <w>FacetWrap</w>
+      <w>Fakaofo</w>
+      <w>Faroe</w>
       <w>FastICA</w>
       <w>Federalist</w>
+      <w>Fiji</w>
       <w>File</w>
       <w>Filter</w>
       <w>Find</w>
       <w>ForeachBackend</w>
       <w>Formaldehyde</w>
       <w>Formula</w>
+      <w>Fortaleza</w>
+      <w>Frankfurt</w>
+      <w>Freetown</w>
       <w>FruchtermanReingold</w>
+      <w>Funafuti</w>
+      <w>GBBankHoliday</w>
+      <w>GBMayDay</w>
+      <w>GBMilleniumDay</w>
+      <w>GBSummerBankHoliday</w>
       <w>GDPsatis</w>
       <w>GGally</w>
       <w>GM2.lvm</w>
       <w>GM3.lvm</w>
+      <w>Gaborone</w>
+      <w>Galapagos</w>
+      <w>Gambier</w>
       <w>Gamma</w>
       <w>Gamma.lvm</w>
+      <w>Gaza</w>
       <w>Geary</w>
       <w>GearyLocal</w>
       <w>GenzBretz</w>
@@ -1019,8 +1228,22 @@
       <w>GeomTufteboxplot</w>
       <w>GeomViolin</w>
       <w>GeomVline</w>
+      <w>Gibraltar</w>
+      <w>Glace_Bay</w>
       <w>GlaucomaMVF</w>
+      <w>Godthab</w>
+      <w>GoodFriday</w>
+      <w>Goose_Bay</w>
+      <w>Grand_Turk</w>
       <w>Graph</w>
+      <w>Grenada</w>
+      <w>Guadalcanal</w>
+      <w>Guadeloupe</w>
+      <w>Guam</w>
+      <w>Guatemala</w>
+      <w>Guayaquil</w>
+      <w>Guernsey</w>
+      <w>Guyana</w>
       <w>H0</w>
       <w>HLC</w>
       <w>HLLE</w>
@@ -1032,15 +1255,26 @@
       <w>HTTP_VERSION_LAST</w>
       <w>HTTP_VERSION_NONE</w>
       <w>HairEyeColor</w>
+      <w>Halifax</w>
+      <w>Harare</w>
+      <w>Harbin</w>
       <w>Harman23.cor</w>
       <w>Harman74.cor</w>
+      <w>Havana</w>
+      <w>Helsinki</w>
+      <w>Hermosillo</w>
       <w>Hershey</w>
       <w>Hi</w>
       <w>HiCl</w>
       <w>Hitters</w>
+      <w>Hobart</w>
       <w>HoltWinters</w>
+      <w>HongKong</w>
+      <w>Hong_Kong</w>
+      <w>Honolulu</w>
       <w>HorseKicks</w>
       <w>Hospital</w>
+      <w>Hovd</w>
       <w>I</w>
       <w>ICL</w>
       <w>IDateTime</w>
@@ -1049,19 +1283,63 @@
       <w>IRkernel</w>
       <w>ISOdate</w>
       <w>ISOdatetime</w>
+      <w>ITAllSaints</w>
+      <w>ITAssumptionOfVirginMary</w>
+      <w>ITEpiphany</w>
+      <w>ITImmaculateConception</w>
+      <w>ITLiberationDay</w>
+      <w>ITStAmrose</w>
       <w>IV</w>
       <w>Im</w>
+      <w>Indianapolis</w>
       <w>Indometh</w>
       <w>InsectSprays</w>
       <w>Intervals</w>
       <w>Intervals_full</w>
+      <w>Inuvik</w>
       <w>InvBoxCox</w>
       <w>Inverse</w>
+      <w>Iqaluit</w>
+      <w>Irkutsk</w>
+      <w>Isle_of_Man</w>
       <w>Isomap</w>
+      <w>Istanbul</w>
       <w>Italy</w>
       <w>J</w>
       <w>JDEoptim</w>
       <w>JJ</w>
+      <w>JPAutumnalEquinox</w>
+      <w>JPBankHolidayDec31</w>
+      <w>JPBankHolidayJan2</w>
+      <w>JPBankHolidayJan3</w>
+      <w>JPBunkaNoHi</w>
+      <w>JPChildrensDay</w>
+      <w>JPComingOfAgeDay</w>
+      <w>JPConstitutionDay</w>
+      <w>JPEmperorsBirthday</w>
+      <w>JPGantan</w>
+      <w>JPGreeneryDay</w>
+      <w>JPHealthandSportsDay</w>
+      <w>JPKeirouNOhi</w>
+      <w>JPKenkokuKinenNoHi</w>
+      <w>JPKenpouKinenBi</w>
+      <w>JPKinrouKanshaNoHi</w>
+      <w>JPKodomoNoHi</w>
+      <w>JPKokuminNoKyujitu</w>
+      <w>JPMarineDay</w>
+      <w>JPMidoriNoHi</w>
+      <w>JPNatFoundationDay</w>
+      <w>JPNationHoliday</w>
+      <w>JPNationalCultureDay</w>
+      <w>JPNewYearsDay</w>
+      <w>JPRespectForTheAgedDay</w>
+      <w>JPSeijinNoHi</w>
+      <w>JPShuubunNoHi</w>
+      <w>JPTaiikuNoHi</w>
+      <w>JPTennouTanjyouBi</w>
+      <w>JPThanksgivingDay</w>
+      <w>JPUmiNoHi</w>
+      <w>JPVernalEquinox</w>
       <w>JS</w>
       <w>JSON_T_ARRAY_BEGIN</w>
       <w>JSON_T_ARRAY_END</w>
@@ -1076,9 +1354,18 @@
       <w>JSON_T_OBJECT_END</w>
       <w>JSON_T_STRING</w>
       <w>JSON_T_TRUE</w>
+      <w>Jakarta</w>
+      <w>Jamaica</w>
+      <w>Jayapura</w>
+      <w>Jersey</w>
+      <w>Jerusalem</w>
       <w>JobSatisfaction</w>
+      <w>Johannesburg</w>
       <w>JohnsonJohnson</w>
+      <w>Johnston</w>
       <w>JointSports</w>
+      <w>Jujuy</w>
+      <w>Juneau</w>
       <w>KGE</w>
       <w>KGE.data.frame</w>
       <w>KGE.default</w>
@@ -1098,19 +1385,40 @@
       <w>KRmodcomp_init.mer</w>
       <w>KRmodcomp_internal</w>
       <w>KSd</w>
+      <w>Kabul</w>
+      <w>Kaliningrad</w>
       <w>KalmanForecast</w>
       <w>KalmanLike</w>
       <w>KalmanRun</w>
       <w>KalmanSmooth</w>
       <w>KamadaKawai</w>
+      <w>Kamchatka</w>
+      <w>Kampala</w>
       <w>Kappa</w>
+      <w>Karachi</w>
       <w>KarameaAtGorgeQts</w>
+      <w>Kashgar</w>
+      <w>Katmandu</w>
       <w>Kaver</w>
       <w>Keenan.test</w>
       <w>Kenvl</w>
+      <w>Kerguelen</w>
       <w>KernSmooth</w>
       <w>Kfn</w>
+      <w>Khartoum</w>
       <w>KhmaladzeTest</w>
+      <w>Kiev</w>
+      <w>Kigali</w>
+      <w>Kinshasa</w>
+      <w>Kiritimati</w>
+      <w>Knox</w>
+      <w>Kosrae</w>
+      <w>Krasnoyarsk</w>
+      <w>KualaLumpur</w>
+      <w>Kuala_Lumpur</w>
+      <w>Kuching</w>
+      <w>Kuwait</w>
+      <w>Kwajalein</w>
       <w>L2metric</w>
       <w>LAB</w>
       <w>LB.test</w>
@@ -1121,9 +1429,13 @@
       <w>LR_test</w>
       <w>LUV</w>
       <w>La.svd</w>
+      <w>La_Paz</w>
+      <w>La_Rioja</w>
       <w>La_library</w>
       <w>La_version</w>
+      <w>LaborDay</w>
       <w>Lag</w>
+      <w>Lagos</w>
       <w>LakeHuron</w>
       <w>LaplacianEigenmaps</w>
       <w>Lapply</w>
@@ -1131,18 +1443,34 @@
       <w>LdFlags</w>
       <w>LdaClassic</w>
       <w>LdaPP</w>
+      <w>Libreville</w>
       <w>LifeCycleSavings</w>
       <w>Lifeboats</w>
+      <w>Lima</w>
       <w>LinGray</w>
       <w>LinOCS</w>
       <w>Linda</w>
+      <w>Lindeman</w>
+      <w>Lisbon</w>
       <w>List</w>
+      <w>Ljubljana</w>
       <w>Lo</w>
       <w>LoCl</w>
       <w>LoHi</w>
       <w>Loblolly</w>
       <w>Logic</w>
       <w>LogitBoost</w>
+      <w>Lome</w>
+      <w>London</w>
+      <w>Longyearbyen</w>
+      <w>Lord_Howe</w>
+      <w>LosAngeles</w>
+      <w>Los_Angeles</w>
+      <w>Louisville</w>
+      <w>Luanda</w>
+      <w>Lubumbashi</w>
+      <w>Lusaka</w>
+      <w>Luxembourg</w>
       <w>MATCH</w>
       <w>MATCH.default</w>
       <w>MATCH.times</w>
@@ -1151,10 +1479,33 @@
       <w>MEapply</w>
       <w>MSEP</w>
       <w>MSPatients</w>
+      <w>MST</w>
+      <w>Macau</w>
+      <w>Maceio</w>
+      <w>Madeira</w>
+      <w>Madrid</w>
+      <w>Magadan</w>
+      <w>Mahe</w>
+      <w>Majuro</w>
+      <w>Makassar</w>
+      <w>Malabo</w>
+      <w>Maldives</w>
+      <w>Malta</w>
       <w>Mammals</w>
+      <w>Managua</w>
+      <w>Manaus</w>
       <w>Mandible</w>
+      <w>Manila</w>
       <w>Map</w>
+      <w>Maputo</w>
       <w>MaquehueTemuco</w>
+      <w>Marengo</w>
+      <w>Mariehamn</w>
+      <w>Marigot</w>
+      <w>Marquesas</w>
+      <w>Martinique</w>
+      <w>Maseru</w>
+      <w>MassOfArchangels</w>
       <w>Math</w>
       <w>Math.Date</w>
       <w>Math.POSIXt</w>
@@ -1163,7 +1514,13 @@
       <w>Math.factor</w>
       <w>Math2</w>
       <w>MatrixModels</w>
+      <w>Mauritius</w>
+      <w>Mawson</w>
+      <w>Mayotte</w>
+      <w>Mazatlan</w>
+      <w>Mbabane</w>
       <w>McLeod.Li.test</w>
+      <w>McMurdo</w>
       <w>Mchi</w>
       <w>Mclust</w>
       <w>MclustBootstrap</w>
@@ -1175,11 +1532,20 @@
       <w>MclustDRsubsel_classif</w>
       <w>MclustDRsubsel_cluster</w>
       <w>Mehta</w>
+      <w>Melbourne</w>
+      <w>Mendoza</w>
+      <w>Menominee</w>
+      <w>Merida</w>
       <w>MethodAddCoerce</w>
       <w>MethodsList</w>
       <w>MethodsListSelect</w>
+      <w>MexicoCity</w>
+      <w>Mexico_City</w>
       <w>Middleware</w>
+      <w>Midway</w>
       <w>Mime</w>
+      <w>Minsk</w>
+      <w>Miquelon</w>
       <w>Missing</w>
       <w>Miwa</w>
       <w>Mod</w>
@@ -1188,11 +1554,22 @@
       <w>ModelEnvMatrix</w>
       <w>ModelMetrics</w>
       <w>Module</w>
+      <w>Mogadishu</w>
+      <w>Monaco</w>
+      <w>Moncton</w>
+      <w>Monrovia</w>
+      <w>Monterrey</w>
+      <w>Montevideo</w>
+      <w>Monticello</w>
+      <w>Montreal</w>
+      <w>Montserrat</w>
       <w>Moran</w>
       <w>MoranLocal</w>
+      <w>Moscow</w>
       <w>Mpsi</w>
       <w>MrhoInf</w>
       <w>Multipart</w>
+      <w>Muscat</w>
       <w>Mwgt</w>
       <w>NAvalue</w>
       <w>NCOL</w>
@@ -1216,13 +1593,31 @@
       <w>NSE.matrix</w>
       <w>NSE.zoo</w>
       <w>NSeff</w>
+      <w>Nairobi</w>
+      <w>Nassau</w>
+      <w>Nauru</w>
       <w>Nclus</w>
+      <w>Ndjamena</w>
       <w>Negate</w>
       <w>NelPlo</w>
+      <w>NewYearsDay</w>
+      <w>NewYork</w>
+      <w>New_Salem</w>
+      <w>New_York</w>
       <w>Next</w>
       <w>NextMethod</w>
+      <w>Niamey</w>
+      <w>Nicosia</w>
       <w>Nile</w>
+      <w>Nipigon</w>
+      <w>Niue</w>
+      <w>Nome</w>
       <w>NonResponse</w>
+      <w>Norfolk</w>
+      <w>Noronha</w>
+      <w>Nouakchott</w>
+      <w>Noumea</w>
+      <w>Novosibirsk</w>
       <w>NregFix</w>
       <w>OHLC</w>
       <w>OHLCV</w>
@@ -1231,6 +1626,7 @@
       <w>ORDER.default</w>
       <w>OcaEnOnaQts</w>
       <w>OlsonNames</w>
+      <w>Omsk</w>
       <w>Op</w>
       <w>OpCl</w>
       <w>OpHi</w>
@@ -1244,12 +1640,15 @@
       <w>Ops.factor</w>
       <w>Ops.numeric_version</w>
       <w>Ops.ordered</w>
+      <w>Oral</w>
       <w>Orange</w>
       <w>OrchardSprays</w>
       <w>Ord_estimate</w>
       <w>Ord_plot</w>
       <w>Org</w>
+      <w>Oslo</w>
       <w>OsloTransect</w>
+      <w>Ouagadougou</w>
       <w>OvaryCancer</w>
       <w>PBmodcomp</w>
       <w>PBmodcomp.lm</w>
@@ -1283,7 +1682,17 @@
       <w>PKI.verify.tar</w>
       <w>PKI.verifyCA</w>
       <w>PP.test</w>
+      <w>PST</w>
       <w>Pacf</w>
+      <w>Pacific</w>
+      <w>Pago_Pago</w>
+      <w>Palau</w>
+      <w>PalmSunday</w>
+      <w>Palmer</w>
+      <w>Panama</w>
+      <w>Pangnirtung</w>
+      <w>Paramaribo</w>
+      <w>Paris</w>
       <w>ParseFormula</w>
       <w>PcaClassic</w>
       <w>PcaCov</w>
@@ -1292,7 +1701,20 @@
       <w>PcaLocantore</w>
       <w>PcaProj</w>
       <w>Peirce</w>
+      <w>Pentecost</w>
+      <w>PentecostMonday</w>
+      <w>Perth</w>
+      <w>Petersburg</w>
+      <w>Phnom_Penh</w>
+      <w>Phoenix</w>
+      <w>Pitcairn</w>
       <w>PlantGrowth</w>
+      <w>Podgorica</w>
+      <w>Ponape</w>
+      <w>Pontianak</w>
+      <w>Port_Moresby</w>
+      <w>Port_of_Spain</w>
+      <w>Porto_Velho</w>
       <w>Position</w>
       <w>PositionDodge</w>
       <w>PositionDodge2</w>
@@ -1302,22 +1724,29 @@
       <w>PositionJitterdodge</w>
       <w>PositionNudge</w>
       <w>PositionStack</w>
+      <w>Prague</w>
       <w>PreSex</w>
       <w>Predict</w>
+      <w>PresentationOfLord</w>
       <w>Psim</w>
+      <w>Puerto_Rico</w>
       <w>Punishment</w>
       <w>Puromycin</w>
+      <w>Pyongyang</w>
       <w>Q</w>
       <w>QTECox</w>
       <w>QUnif</w>
       <w>Q_NX</w>
       <w>Q_global</w>
       <w>Q_local</w>
+      <w>Qatar</w>
       <w>QdaClassic</w>
       <w>QdaCov</w>
       <w>Qn</w>
       <w>Qn.old</w>
+      <w>Quinquagesima</w>
       <w>Quote</w>
+      <w>Qyzylorda</w>
       <w>R</w>
       <w>R.Version</w>
       <w>R.home</w>
@@ -1345,7 +1774,11 @@
       <w>R_NX</w>
       <w>R_system_version</w>
       <w>Radbound</w>
+      <w>Rainy_River</w>
       <w>Range.lvm</w>
+      <w>Rangoon</w>
+      <w>Rankin_Inlet</w>
+      <w>Rarotonga</w>
       <w>Ratio</w>
       <w>Rcmd</w>
       <w>Rcpp</w>
@@ -1368,18 +1801,30 @@
       <w>Rdindex</w>
       <w>Re</w>
       <w>Recall</w>
+      <w>Recife</w>
       <w>Reclass</w>
       <w>Redirect</w>
       <w>Reduce</w>
+      <w>Regina</w>
       <w>RepVict</w>
       <w>Request</w>
+      <w>Resolute</w>
       <w>Response</w>
+      <w>Reunion</w>
+      <w>Reykjavik</w>
       <w>Rhttpd</w>
       <w>RhttpdApp</w>
       <w>RhttpdErrorStream</w>
       <w>RhttpdInputStream</w>
+      <w>Riga</w>
+      <w>Rio_Branco</w>
+      <w>Rio_Gallegos</w>
+      <w>Riyadh</w>
       <w>Rochdale</w>
+      <w>RogationSunday</w>
+      <w>Rome</w>
       <w>Rook</w>
+      <w>Rothera</w>
       <w>Rows</w>
       <w>Rprof</w>
       <w>Rprofmem</w>
@@ -1442,7 +1887,19 @@
       <w>STT</w>
       <w>STTDF</w>
       <w>SVindex</w>
+      <w>Saigon</w>
+      <w>Saipan</w>
+      <w>Sakhalin</w>
+      <w>Samara</w>
+      <w>Samarkand</w>
       <w>SanMartinoPPts</w>
+      <w>San_Juan</w>
+      <w>San_Marino</w>
+      <w>Santiago</w>
+      <w>Santo_Domingo</w>
+      <w>Sao_Paulo</w>
+      <w>Sao_Tome</w>
+      <w>Sarajevo</w>
       <w>Saxony</w>
       <w>Scale</w>
       <w>ScaleAdv</w>
@@ -1454,17 +1911,37 @@
       <w>ScaleDiscrete</w>
       <w>ScaleDiscreteIdentity</w>
       <w>ScaleDiscretePosition</w>
+      <w>Scoresbysund</w>
       <w>Seatbelts</w>
+      <w>Seoul</w>
+      <w>Septuagesima</w>
       <w>Server</w>
       <w>SexualFun</w>
+      <w>Shanghai</w>
       <w>SharedData</w>
+      <w>Shiprock</w>
       <w>SiegelsEx</w>
       <w>SignatureMethod</w>
+      <w>Simferopol</w>
+      <w>Singapore</w>
+      <w>Skopje</w>
       <w>Smoking</w>
       <w>Sn</w>
+      <w>Sofia</w>
+      <w>SolemnityOfMary</w>
+      <w>South_Georgia</w>
+      <w>South_Pole</w>
       <w>SpaceShuttle</w>
       <w>Specials</w>
+      <w>St_Barthelemy</w>
+      <w>St_Helena</w>
+      <w>St_Johns</w>
+      <w>St_Kitts</w>
+      <w>St_Lucia</w>
+      <w>St_Thomas</w>
+      <w>St_Vincent</w>
       <w>Stangle</w>
+      <w>Stanley</w>
       <w>Stat</w>
       <w>StatBin</w>
       <w>StatBin2d</w>
@@ -1494,6 +1971,7 @@
       <w>StatUnique</w>
       <w>StatYdensity</w>
       <w>Static</w>
+      <w>Stockholm</w>
       <w>Strauss</w>
       <w>Strict</w>
       <w>StrictCharacter</w>
@@ -1516,6 +1994,9 @@
       <w>SweaveSyntaxLatex</w>
       <w>SweaveSyntaxNoweb</w>
       <w>SweaveTeXFilter</w>
+      <w>Swift_Current</w>
+      <w>Sydney</w>
+      <w>Syowa</w>
       <w>Sys.Date</w>
       <w>Sys.MIPS</w>
       <w>Sys.chmod</w>
@@ -1537,6 +2018,7 @@
       <w>Sys.sizes</w>
       <w>Sys.sleep</w>
       <w>Sys.time</w>
+      <w>Sys.timeDate</w>
       <w>Sys.timezone</w>
       <w>Sys.umask</w>
       <w>Sys.unsetenv</w>
@@ -1548,12 +2030,36 @@
       <w>TA.plot</w>
       <w>TSA</w>
       <w>TVPACK</w>
+      <w>Tahiti</w>
+      <w>Taipei</w>
+      <w>Tallinn</w>
+      <w>Tarawa</w>
+      <w>Tashkent</w>
+      <w>Tbilisi</w>
+      <w>Tegucigalpa</w>
+      <w>Tehran</w>
+      <w>Tell_City</w>
       <w>Theoph</w>
+      <w>Thimphu</w>
+      <w>Thule</w>
+      <w>Thunder_Bay</w>
+      <w>Tijuana</w>
+      <w>Tirane</w>
       <w>Titanic</w>
+      <w>Tokyo</w>
+      <w>Tongatapu</w>
       <w>ToothGrowth</w>
+      <w>Toronto</w>
+      <w>Tortola</w>
+      <w>TransfigurationOfLord</w>
+      <w>TrinitySunday</w>
+      <w>Tripoli</w>
       <w>Trucks</w>
+      <w>Truk</w>
       <w>Tsay.test</w>
+      <w>Tucuman</w>
       <w>TukeyHSD</w>
+      <w>Tunis</w>
       <w>Type1Font</w>
       <w>UCBAdmissions</w>
       <w>UKDriverDeaths</w>
@@ -1567,17 +2073,38 @@
       <w>URLencode</w>
       <w>USAccDeaths</w>
       <w>USArrests</w>
+      <w>USCPulaskisBirthday</w>
+      <w>USChristmasDay</w>
+      <w>USColumbusDay</w>
+      <w>USDecorationMemorialDay</w>
       <w>USDistLag</w>
+      <w>USElectionDay</w>
+      <w>USGoodFriday</w>
+      <w>USInaugurationDay</w>
+      <w>USIndependenceDay</w>
       <w>USJudgeRatings</w>
+      <w>USLaborDay</w>
+      <w>USLincolnsBirthday</w>
+      <w>USMLKingsBirthday</w>
+      <w>USMemorialDay</w>
       <w>USMortality</w>
+      <w>USNewYearsDay</w>
       <w>USPersonalExpenditure</w>
+      <w>USPresidentsDay</w>
       <w>USRegionalMortality</w>
       <w>USSouthPolygon</w>
+      <w>USThanksgivingDay</w>
+      <w>USVeteransDay</w>
+      <w>USWashingtonsBirthday</w>
       <w>UScitiesD</w>
       <w>USeconomic</w>
       <w>UUIDgenerate</w>
+      <w>Ulaanbaatar</w>
+      <w>Urumqi</w>
       <w>UseMethod</w>
+      <w>Ushuaia</w>
       <w>Utils</w>
+      <w>Uzhgorod</w>
       <w>VADeaths</w>
       <w>VE</w>
       <w>VE.data.frame</w>
@@ -1585,17 +2112,35 @@
       <w>VE.matrix</w>
       <w>VE.zoo</w>
       <w>VIM</w>
+      <w>Vaduz</w>
+      <w>Vancouver</w>
+      <w>Vatican</w>
       <w>Vectorize</w>
+      <w>Vevay</w>
+      <w>Vienna</w>
+      <w>Vientiane</w>
       <w>View</w>
+      <w>Vilnius</w>
+      <w>Vincennes</w>
       <w>VisualAcuity</w>
+      <w>Vladivostok</w>
       <w>Vo</w>
+      <w>Volgograd</w>
       <w>VonBort</w>
+      <w>Vostok</w>
       <w>WMSTileOptions</w>
       <w>WWWusage</w>
+      <w>Wake</w>
+      <w>Wallis</w>
+      <w>Warsaw</w>
       <w>Weights</w>
       <w>WeldonDice</w>
       <w>Which</w>
+      <w>Whitehorse</w>
       <w>Wilks.test</w>
+      <w>Winamac</w>
+      <w>Windhoek</w>
+      <w>Winnipeg</w>
       <w>WomenQueue</w>
       <w>WorldPhones</w>
       <w>X</w>
@@ -1605,8 +2150,16 @@
       <w>X11Fonts</w>
       <w>XYZ</w>
       <w>Y</w>
+      <w>Yakutat</w>
+      <w>Yakutsk</w>
+      <w>Yekaterinburg</w>
+      <w>Yellowknife</w>
+      <w>Yerevan</w>
       <w>Yloadings</w>
       <w>Yscores</w>
+      <w>Zagreb</w>
+      <w>Zaporozhye</w>
+      <w>Zurich</w>
       <w>`!!!`</w>
       <w>`!!`</w>
       <w>`!.bit`</w>
@@ -1776,6 +2329,7 @@
       <w>`.__T__[&lt;-:base`</w>
       <w>`.__T__[[:base`</w>
       <w>`.__T__[[&lt;-:base`</w>
+      <w>`.__T__abline:graphics`</w>
       <w>`.__T__add:git2r`</w>
       <w>`.__T__addLayer:raster`</w>
       <w>`.__T__addNextMethod:methods`</w>
@@ -1784,6 +2338,7 @@
       <w>`.__T__ahead_behind:git2r`</w>
       <w>`.__T__algorithm:NMF`</w>
       <w>`.__T__algorithm&lt;-:NMF`</w>
+      <w>`.__T__align:timeDate`</w>
       <w>`.__T__all.equal:base`</w>
       <w>`.__T__alpha:kernlab`</w>
       <w>`.__T__alphaindex:kernlab`</w>
@@ -1813,6 +2368,7 @@
       <w>`.__T__as_date:base`</w>
       <w>`.__T__as_datetime:lubridate`</w>
       <w>`.__T__atan2:base`</w>
+      <w>`.__T__atoms:timeDate`</w>
       <w>`.__T__b:kernlab`</w>
       <w>`.__T__bandnr:raster`</w>
       <w>`.__T__barplot:graphics`</w>
@@ -1946,6 +2502,8 @@
       <w>`.__T__featureScore:NMF`</w>
       <w>`.__T__fetch:git2r`</w>
       <w>`.__T__fetch_heads:git2r`</w>
+      <w>`.__T__finCenter:timeDate`</w>
+      <w>`.__T__finCenter&lt;-:timeDate`</w>
       <w>`.__T__fit:NMF`</w>
       <w>`.__T__fit:modeltools`</w>
       <w>`.__T__fit&lt;-:NMF`</w>
@@ -1959,6 +2517,7 @@
       <w>`.__T__formals&lt;-:base`</w>
       <w>`.__T__formula:stats`</w>
       <w>`.__T__freq:raster`</w>
+      <w>`.__T__frequency:stats`</w>
       <w>`.__T__fromJSON:RJSONIO`</w>
       <w>`.__T__gausspr:kernlab`</w>
       <w>`.__T__geom:raster`</w>
@@ -1972,6 +2531,7 @@
       <w>`.__T__getCov:rrcov`</w>
       <w>`.__T__getData:dimRed`</w>
       <w>`.__T__getData:rrcov`</w>
+      <w>`.__T__getDataPart:methods`</w>
       <w>`.__T__getDet:rrcov`</w>
       <w>`.__T__getDimRedData:dimRed`</w>
       <w>`.__T__getDistance:rrcov`</w>
@@ -2041,7 +2601,11 @@
       <w>`.__T__is.na:base`</w>
       <w>`.__T__is.nan:base`</w>
       <w>`.__T__isClassic:rrcov`</w>
+      <w>`.__T__isDaily:timeDate`</w>
       <w>`.__T__isLonLat:raster`</w>
+      <w>`.__T__isMonthly:timeDate`</w>
+      <w>`.__T__isQuarterly:timeDate`</w>
+      <w>`.__T__isRegular:timeDate`</w>
       <w>`.__T__isSingular:rrcov`</w>
       <w>`.__T__isValidJSON:RJSONIO`</w>
       <w>`.__T__is_bare:git2r`</w>
@@ -2052,6 +2616,7 @@
       <w>`.__T__is_local:git2r`</w>
       <w>`.__T__is_merge:git2r`</w>
       <w>`.__T__is_shallow:git2r`</w>
+      <w>`.__T__julian:base`</w>
       <w>`.__T__kcall:kernlab`</w>
       <w>`.__T__kcca:kernlab`</w>
       <w>`.__T__kcor:kernlab`</w>
@@ -2104,6 +2669,7 @@
       <w>`.__T__modal:raster`</w>
       <w>`.__T__modelname:NMF`</w>
       <w>`.__T__month&lt;-:lubridate`</w>
+      <w>`.__T__months:base`</w>
       <w>`.__T__mosaic:raster`</w>
       <w>`.__T__nSV:kernlab`</w>
       <w>`.__T__na.fail:stats`</w>
@@ -2154,6 +2720,7 @@
       <w>`.__T__pivots:kernlab`</w>
       <w>`.__T__plot:graphics`</w>
       <w>`.__T__plotRGB:raster`</w>
+      <w>`.__T__points:graphics`</w>
       <w>`.__T__pop:RCurl`</w>
       <w>`.__T__posterior:modeltools`</w>
       <w>`.__T__predgain:kernlab`</w>
@@ -2227,6 +2794,7 @@
       <w>`.__T__runtime.all:NMF`</w>
       <w>`.__T__runtime:NMF`</w>
       <w>`.__T__rvm:kernlab`</w>
+      <w>`.__T__sample:base`</w>
       <w>`.__T__sampleRandom:raster`</w>
       <w>`.__T__sampleRegular:raster`</w>
       <w>`.__T__sampleStratified:raster`</w>
@@ -2275,6 +2843,7 @@
       <w>`.__T__tags:git2r`</w>
       <w>`.__T__tail:utils`</w>
       <w>`.__T__text:graphics`</w>
+      <w>`.__T__timeDate:timeDate`</w>
       <w>`.__T__timeMatch:spacetime`</w>
       <w>`.__T__time_length:lubridate`</w>
       <w>`.__T__toJSON:RJSONIO`</w>
@@ -2344,12 +2913,15 @@
       <w>`?`</w>
       <w>`@&lt;-`</w>
       <w>`@`</w>
+      <w>`Blanc-Sablon`</w>
       <w>`CLASS&lt;-`</w>
       <w>`Encoding&lt;-`</w>
       <w>`Graph&lt;-`</w>
       <w>`Missing&lt;-`</w>
       <w>`Model&lt;-`</w>
       <w>`NAvalue&lt;-`</w>
+      <w>`Port-au-Prince`</w>
+      <w>`Porto-Novo`</w>
       <w>`S3Class&lt;-`</w>
       <w>`S3Part&lt;-`</w>
       <w>`[.AsIs`</w>
@@ -2436,6 +3008,7 @@
       <w>`f_env&lt;-`</w>
       <w>`f_lhs&lt;-`</w>
       <w>`f_rhs&lt;-`</w>
+      <w>`finCenter&lt;-`</w>
       <w>`fit&lt;-`</w>
       <w>`fits&lt;-`</w>
       <w>`fittedModel&lt;-`</w>
@@ -2810,8 +3383,12 @@
       <w>alcoholreg</w>
       <w>algorithm</w>
       <w>alias</w>
+      <w>align</w>
       <w>align.time</w>
+      <w>alignDaily</w>
       <w>alignExtent</w>
+      <w>alignMonthly</w>
+      <w>alignQuarterly</w>
       <w>alist</w>
       <w>all</w>
       <w>all.bit</w>
@@ -2985,6 +3562,7 @@
       <w>as.Date.default</w>
       <w>as.Date.factor</w>
       <w>as.Date.numeric</w>
+      <w>as.Date.timeDate</w>
       <w>as.Date.ts</w>
       <w>as.Date.yearmon</w>
       <w>as.Date.yearqtr</w>
@@ -3170,6 +3748,7 @@
       <w>as.tbl_cube</w>
       <w>as.tclObj</w>
       <w>as.tibble</w>
+      <w>as.timeDate</w>
       <w>as.timeSeries.xts</w>
       <w>as.trans</w>
       <w>as.ts</w>
@@ -3271,6 +3850,7 @@
       <w>atanh</w>
       <w>atanh_trans</w>
       <w>atlStorms2005</w>
+      <w>atoms</w>
       <w>atrack</w>
       <w>attach</w>
       <w>attachNamespace</w>
@@ -3319,6 +3899,7 @@
       <w>axis.Date</w>
       <w>axis.POSIXct</w>
       <w>axis.default</w>
+      <w>axis.timeDate</w>
       <w>axisTicks</w>
       <w>b</w>
       <w>b.star</w>
@@ -3481,7 +4062,9 @@
       <w>bld.mbb.bootstrap</w>
       <w>blob</w>
       <w>blob_create</w>
+      <w>blockEnd</w>
       <w>blockSize</w>
+      <w>blockStart</w>
       <w>blockdiag</w>
       <w>blocks</w>
       <w>bloodtransfusion</w>
@@ -4448,6 +5031,7 @@
       <w>datetime_to_timestamp</w>
       <w>day</w>
       <w>dayOfWeek</w>
+      <w>dayOfYear</w>
       <w>days</w>
       <w>days_in_month</w>
       <w>daysecond</w>
@@ -4673,6 +5257,7 @@
       <w>diffinv</w>
       <w>diffseries</w>
       <w>difftime</w>
+      <w>difftimeDate</w>
       <w>digamma</w>
       <w>digest</w>
       <w>digitsBase</w>
@@ -5320,6 +5905,7 @@
       <w>filter_if</w>
       <w>filter_select</w>
       <w>filter_slider</w>
+      <w>finCenter</w>
       <w>finalDefaultMethod</w>
       <w>finalize</w>
       <w>find</w>
@@ -5777,6 +6363,8 @@
       <w>getRaw</w>
       <w>getRefClass</w>
       <w>getResponse</w>
+      <w>getRmetricsOption</w>
+      <w>getRmetricsOptions</w>
       <w>getRotationMatrix</w>
       <w>getRversion</w>
       <w>getS3method</w>
@@ -6683,6 +7271,12 @@
       <w>hms</w>
       <w>hms_trans</w>
       <w>hobbs</w>
+      <w>holiday</w>
+      <w>holidayLONDON</w>
+      <w>holidayNERC</w>
+      <w>holidayNYSE</w>
+      <w>holidayTSX</w>
+      <w>holidayZURICH</w>
       <w>holt</w>
       <w>hommel.test</w>
       <w>homogen.test</w>
@@ -7153,24 +7747,30 @@
       <w>is.zoo</w>
       <w>isAvailable</w>
       <w>isBaseNamespace</w>
+      <w>isBizday</w>
       <w>isClass</w>
       <w>isClassDef</w>
       <w>isClassUnion</w>
       <w>isClassic</w>
       <w>isClassification</w>
       <w>isConstantValue</w>
+      <w>isDaily</w>
       <w>isFALSE</w>
       <w>isGeneric</w>
       <w>isGrammarSymbol</w>
       <w>isGroup</w>
+      <w>isHoliday</w>
       <w>isIncomplete</w>
       <w>isLonLat</w>
+      <w>isMonthly</w>
       <w>isNMFfit</w>
       <w>isNamespace</w>
       <w>isNamespaceLoaded</w>
       <w>isOpen</w>
       <w>isOrdered</w>
+      <w>isQuarterly</w>
       <w>isRegression</w>
+      <w>isRegular</w>
       <w>isRematched</w>
       <w>isRestart</w>
       <w>isS3method</w>
@@ -7185,6 +7785,8 @@
       <w>isTRUE</w>
       <w>isValidJSON</w>
       <w>isVirtualClass</w>
+      <w>isWeekday</w>
+      <w>isWeekend</w>
       <w>isXS3Class</w>
       <w>is_A1</w>
       <w>is_R1C1</w>
@@ -7686,8 +8288,10 @@
       <w>list2hexList</w>
       <w>list2mat</w>
       <w>listCurlOptions</w>
+      <w>listFinCenter</w>
       <w>listFromMethods</w>
       <w>listFromMlist</w>
+      <w>listHolidays</w>
       <w>listTA</w>
       <w>list_along</w>
       <w>list_files_with_exts</w>
@@ -8170,6 +8774,8 @@
       <w>mget</w>
       <w>mic</w>
       <w>microseconds</w>
+      <w>midnightStandard</w>
+      <w>midnightStandard2</w>
       <w>midwest</w>
       <w>milk</w>
       <w>milliseconds</w>
@@ -8282,6 +8888,7 @@
       <w>monthdays</w>
       <w>monthly2annual</w>
       <w>monthlyReturn</w>
+      <w>monthlyRolling</w>
       <w>monthlyfunction</w>
       <w>monthlyfunction.data.frame</w>
       <w>monthlyfunction.default</w>
@@ -9082,8 +9689,10 @@
       <w>periodReturn</w>
       <w>period_to_seconds</w>
       <w>periodicSpline</w>
+      <w>periodicallyRolling</w>
       <w>periodicity</w>
       <w>periodogram</w>
+      <w>periods</w>
       <w>perl</w>
       <w>permp</w>
       <w>permutations</w>
@@ -10377,6 +10986,7 @@
       <w>rtmspe</w>
       <w>rug</w>
       <w>rugNA</w>
+      <w>rulesFinCenter</w>
       <w>run</w>
       <w>run.Rserve</w>
       <w>runServer</w>
@@ -10784,6 +11394,7 @@
       <w>setRefClass</w>
       <w>setReplaceMethod</w>
       <w>setRepositories</w>
+      <w>setRmetricsOptions</w>
       <w>setSelectionRanges</w>
       <w>setSessionTimeLimit</w>
       <w>setSymbolLookup</w>
@@ -11549,6 +12160,7 @@
       <w>stripplot</w>
       <w>strmacro</w>
       <w>strptime</w>
+      <w>strptimeDate</w>
       <w>strrep</w>
       <w>strsplit</w>
       <w>strtoi</w>
@@ -11917,8 +12529,19 @@
       <w>timeBased</w>
       <w>timeBasedRange</w>
       <w>timeBasedSeq</w>
+      <w>timeCalendar</w>
+      <w>timeDate</w>
+      <w>timeFirstDayInMonth</w>
+      <w>timeFirstDayInQuarter</w>
       <w>timeInput</w>
+      <w>timeLastDayInMonth</w>
+      <w>timeLastDayInQuarter</w>
+      <w>timeLastNdayInMonth</w>
       <w>timeMatch</w>
+      <w>timeNdayOnOrAfter</w>
+      <w>timeNdayOnOrBefore</w>
+      <w>timeNthNdayInMonth</w>
+      <w>timeSequence</w>
       <w>time_ago</w>
       <w>time_length</w>
       <w>time_trans</w>
@@ -12647,6 +13270,7 @@
       <w>which.minN</w>
       <w>which.na</w>
       <w>which.packet</w>
+      <w>whichFormat</w>
       <w>which_nearest</w>
       <w>which_ttf2pt1</w>
       <w>whiches.max</w>

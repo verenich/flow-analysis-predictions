@@ -1,0 +1,39 @@
+{
+  "case_id_col": "case_id",
+  "activity_col": "activity_name",
+  "timestamp_col": "time",
+  "dynamic_cat_cols": [
+    "activity_name",
+    "Resource"
+  ],
+  "static_cat_cols": [
+    "customer",
+    "product",
+    "responsible_section",
+    "seriousness",
+    "service_level",
+    "service_type",
+    "support_section"
+  ],
+  "dynamic_num_cols": [
+    "open_cases",
+    "elapsed"
+  ],
+  "static_num_cols": [
+
+  ],
+  "regression_activities": [
+    "Asss",
+    "Tict",
+    "Wait",
+    "Rslt"
+  ]
+,
+  "gateways": [
+    "x2",
+    "x3",
+    "x4",
+    "x5"
+  ],
+  "max_prefix_length": 4
+}

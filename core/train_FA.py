@@ -207,8 +207,10 @@ with open(outfile, 'w') as fout:
         del relevant_cases_nr_events
         result = pd.DataFrame()
 
-        if dataset_ref == "BPI2012W":
+        if dataset_ref == "BPI2012W" or dataset_ref == "BPI2012W_no_dup":
             current_prob_index = 5
+        elif dataset_ref == "helpdesk":
+            current_prob_index = 3
         else:
             current_prob_index = 1
 
@@ -346,4 +348,3 @@ with open(outfile, 'w') as fout:
     print("\n")
 
 detailed_results.to_csv(detailed_results_file, sep=";", index=False)
-
