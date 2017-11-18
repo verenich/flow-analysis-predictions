@@ -34,6 +34,8 @@ class DatasetManager:
                     dataset_params[predictor_col].remove(label)  # exclude label attributes from features
             setattr(self, predictor_col, dataset_params[predictor_col])
 
+        # define max prefix length
+        self.max_prefix_length = dataset_params[u'max_prefix_length']
 
     def add_remtime(self, group):
         group = group.sort_values(self.timestamp_col, ascending=True)

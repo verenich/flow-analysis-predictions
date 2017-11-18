@@ -30,5 +30,6 @@
   ],
   "gateways": [
 
-  ]
+  ],
+  "max_prefix_length": 7
 }

@@ -27,5 +27,6 @@
   "gateways": [
     "x11",
     "x21"
-  ]
+  ],
+  "max_prefix_length": 4
 }

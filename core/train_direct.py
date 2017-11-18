@@ -28,6 +28,7 @@ home_dir = home_dirs[0] # if there are multiple PYTHONPATHs, choose the first
 logs_dir = "logdata/"
 training_params_dir = "core/training_params/"
 results_dir = "results/validation/"
+detailed_results_dir = "results/detailed/"
 feature_importance_dir = "results/feature_importance/"
 pickles_dir = "pkl/"
 
@@ -44,6 +45,8 @@ methods = encoding_dict[cls_encoding]
 
 outfile = os.path.join(home_dir, results_dir,
                        "validation_direct_%s_%s_%s_%s.csv" % (dataset_ref, method_name, cls_method, n_min_cases_in_bucket))
+detailed_results_file = os.path.join(home_dir, detailed_results_dir,
+                       "validation_direct_%s_%s_%s_%s.csv" % (dataset_ref, method_name, cls_method, n_min_cases_in_bucket))
 
 pickle_file = os.path.join(home_dir, pickles_dir, '%s_%s_%s_%s_%s.pkl' % (dataset_ref, method_name, cls_method, label_col, n_min_cases_in_bucket))
 
@@ -51,7 +54,8 @@ random_state = 22
 fillna = True
 # n_min_cases_in_bucket = 100
 
-##### MAIN PART ######    
+##### MAIN PART ######
+detailed_results = pd.DataFrame()
 with open(outfile, 'w') as fout:
     fout.write("%s,%s,%s,%s,%s,%s\n" % ("label_col", "method", "cls", "nr_events", "metric", "score"))
 
@@ -78,10 +82,7 @@ with open(outfile, 'w') as fout:
 
     # consider prefix lengths until 90th percentile of case length
     min_prefix_length = 2
-    if dataset_ref == "BPI2012W":
-        max_prefix_length = 10
-    else:
-        max_prefix_length = 8
+    max_prefix_length = dataset_manager.max_prefix_length
     #max_prefix_length = min(6, dataset_manager.get_pos_case_length_quantile(data, 0.95))
     del data
 
@@ -213,11 +214,18 @@ with open(outfile, 'w') as fout:
                 # make actual predictions
                 preds_bucket = pipelines[bucket].predict_proba(dt_test_bucket)
 
+            preds_bucket = preds_bucket.clip(min=0)  # if remaining time is predicted to be negative, make it zero
             preds.extend(preds_bucket)
 
             # extract actual label values
             test_y_bucket = dataset_manager.get_label(dt_test_bucket, label_col = label_col)  # one row per case
             test_y.extend(test_y_bucket)
+
+            case_ids = list(dt_test_bucket.groupby(dataset_manager.case_id_col).first().index)
+            current_results = pd.DataFrame(
+                {"method": method_name, "cls": cls_method, "nr_events": nr_events,
+                 "predicted": preds_bucket, "actual": test_y_bucket, "case_id": case_ids})
+            detailed_results = pd.concat([detailed_results, current_results], axis=0)
 
         score = {}
         if len(set(test_y)) < 2:
@@ -232,3 +240,5 @@ with open(outfile, 'w') as fout:
                                             list(score)[1], list(score.values())[1]))
 
     print("\n")
+
+detailed_results.to_csv(detailed_results_file, sep=";", index=False)
