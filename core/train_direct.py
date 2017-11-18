@@ -81,7 +81,7 @@ with open(outfile, 'w') as fout:
     if dataset_ref == "BPI2012W":
         max_prefix_length = 10
     else:
-        max_prefix_length = 7
+        max_prefix_length = 8
     #max_prefix_length = min(6, dataset_manager.get_pos_case_length_quantile(data, 0.95))
     del data
 

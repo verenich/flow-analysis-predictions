@@ -1,0 +1,47 @@
+{
+  "case_id_col": "Case ID",
+  "activity_col": "Activity",
+  "timestamp_col": "Complete Timestamp",
+  "dynamic_cat_cols": [
+    "Activity",
+    "Resource",
+    "lastSent",
+    "notificationType",
+    "dismissal"
+  ],
+  "static_cat_cols": [
+    "article",
+    "vehicleClass"
+  ],
+  "dynamic_num_cols": [
+    "expense",
+    "timesincelastevent",
+    "timesincecasestart",
+    "event_nr",
+    "weekday",
+    "hour",
+    "open_cases"
+  ],
+  "static_num_cols": [
+    "amount",
+    "points"
+  ],
+  "regression_activities": [
+    "Add_penalty",
+    "Insert_Fine_Notification",
+    "Send_for_Credit_Collection",
+    "Payment",
+    "Insert_Date_Appeal_to_Prefecture",
+    "Send_Appeal_to_Prefecture",
+    "Notify_Result_Appeal_to_Offender",
+    "Receive_Result_Appeal_from_Prefecture"
+  ],
+  "gateways": [
+    "x11",
+    "x21",
+    "x31",
+    "x41",
+    "x51",
+    "x61"
+  ]
+}

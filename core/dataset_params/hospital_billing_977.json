@@ -1,0 +1,50 @@
+{
+  "case_id_col": "case_id",
+  "activity_col": "Activity",
+  "timestamp_col": "Complete Timestamp",
+  "dynamic_cat_cols": [
+    "Activity",
+    "Resource",
+    "actOrange",
+    "actRed",
+    "blocked",
+    "caseType",
+    "diagnosis",
+    "flagC",
+    "flagD",
+    "msgCode",
+    "msgType",
+    "state",
+    "version"
+  ],
+  "static_cat_cols": [
+    "speciality"
+  ],
+  "dynamic_num_cols": [
+    "msgCount",
+    "timesincelastevent",
+    "timesincecasestart",
+    "event_nr",
+    "weekday",
+    "hour",
+    "open_cases"
+  ],
+  "static_num_cols": [
+
+  ],
+  "regression_activities": [
+    "CHANGE_DIAGN",
+    "FIN",
+    "DELETE",
+    "RELEASE",
+    "CODE_OK",
+    "CODE_NOK",
+    "BILLED"
+  ],
+  "gateways": [
+    "x11",
+    "x21",
+    "x31",
+    "x41"
+  ]
+}

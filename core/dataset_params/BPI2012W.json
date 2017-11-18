@@ -1,0 +1,39 @@
+{
+  "case_id_col": "case_id",
+  "activity_col": "activity_name",
+  "timestamp_col": "time",
+  "dynamic_cat_cols": [
+    "activity_name",
+    "Resource"
+  ],
+  "static_cat_cols": [
+
+  ],
+  "dynamic_num_cols": [
+    "open_cases",
+    "elapsed",
+    "proctime"
+  ],
+  "static_num_cols": [
+    "AMOUNT_REQ"
+  ],
+  "regression_activities": [
+    "W_Ca",
+    "W_No",
+    "W_Va",
+    "W_Al",
+    "W_id",
+    "W_Bf"
+  ],
+    "gateways": [
+      "x3",
+      "x4",
+      "x5",
+      "x6",
+      "x7",
+      "x8",
+      "x9",
+      "x10",
+      "x11"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "case_id_col": "case_id",
+  "activity_col": "activity_name",
+  "timestamp_col": "time",
+  "dynamic_cat_cols": [
+    "activity_name",
+    "Resource"
+  ],
+  "static_cat_cols": [
+
+  ],
+  "dynamic_num_cols": [
+    "open_cases",
+    "elapsed"
+  ],
+  "static_num_cols": [
+    "AMOUNT_REQ"
+  ],
+  "regression_activities": [
+    "O_SENT",
+    "O_SENT_BACK",
+    "O_ACCEPTED",
+    "O_DECLINED",
+    "O_CANCELLED"
+  ]
+,
+  "gateways": [
+    "x11",
+    "x21"
+  ]
+}
