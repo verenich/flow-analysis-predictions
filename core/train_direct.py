@@ -57,7 +57,7 @@ fillna = True
 ##### MAIN PART ######
 detailed_results = pd.DataFrame()
 with open(outfile, 'w') as fout:
-    fout.write("%s,%s,%s,%s,%s,%s\n" % ("label_col", "method", "cls", "nr_events", "metric", "score"))
+    fout.write("%s,%s,%s,%s,%s,%s,%s\n" % ("dataset", "method", "cls", "nr_events", "metric", "score", "nr_cases"))
 
     dataset_manager = DatasetManager(dataset_ref)
     dtypes = {col: "str" for col in dataset_manager.dynamic_cat_cols + dataset_manager.static_cat_cols +
@@ -68,7 +68,7 @@ with open(outfile, 'w') as fout:
     dtypes[label_col] = "float"  # remaining time should be float
 
     data = pd.read_csv(os.path.join(home_dir, logs_dir, train_file), sep=";", dtype=dtypes)
-    data = data.head(30000)
+    #data = data.head(30000)
     data[dataset_manager.timestamp_col] = pd.to_datetime(data[dataset_manager.timestamp_col])
 
     # add label column to the dataset if it does not exist yet
@@ -228,16 +228,16 @@ with open(outfile, 'w') as fout:
             detailed_results = pd.concat([detailed_results, current_results], axis=0)
 
         score = {}
-        if len(set(test_y)) < 2:
+        if len(test_y) < 2:
             score = {"score1": 0, "score2": 0}
         else:
             score["mae"] = mean_absolute_error(test_y, preds)
             score["rmse"] = np.sqrt(mean_squared_error(test_y, preds))
 
-        fout.write("%s,%s,%s,%s,%s,%s\n" % (label_col, method_name, cls_method, nr_events,
-                                            list(score)[0], list(score.values())[0]))
-        fout.write("%s,%s,%s,%s,%s,%s\n" % (label_col, method_name, cls_method, nr_events,
-                                            list(score)[1], list(score.values())[1]))
+        fout.write("%s,%s,%s,%s,%s,%s,%s\n" % (dataset_ref, method_name, cls_method, nr_events,
+                                            list(score)[0], list(score.values())[0], len(test_y)))
+        fout.write("%s,%s,%s,%s,%s,%s,%s\n" % (dataset_ref, method_name, cls_method, nr_events,
+                                            list(score)[1], list(score.values())[1], len(test_y)))
 
     print("\n")
 

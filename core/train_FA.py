@@ -45,7 +45,7 @@ methods = encoding_dict[cls_encoding]
 outfile = os.path.join(home_dir, results_dir,
                        "validation_FA_%s_%s_%s_%s.csv" % (dataset_ref, method_name, cls_method, n_min_cases_in_bucket))
 detailed_results_file = os.path.join(home_dir, detailed_results_dir,
-                       "validation_direct_%s_%s_%s_%s.csv" % (dataset_ref, method_name, cls_method, n_min_cases_in_bucket))
+                       "validation_FA_%s_%s_%s_%s.csv" % (dataset_ref, method_name, cls_method, n_min_cases_in_bucket))
 
 random_state = 22
 fillna = True
@@ -54,7 +54,7 @@ fillna = True
 ##### MAIN PART ######
 detailed_results = pd.DataFrame()
 with open(outfile, 'w') as fout:
-    fout.write("%s,%s,%s,%s,%s,%s\n" % ("label_col", "method", "cls", "nr_events", "metric", "score"))
+    fout.write("%s,%s,%s,%s,%s,%s,%s\n" % ("dataset", "method", "cls", "nr_events", "metric", "score", "nr_cases"))
 
     dataset_manager = DatasetManager(dataset_ref)
     dtypes = {col: "str" for col in dataset_manager.dynamic_cat_cols + dataset_manager.static_cat_cols +
@@ -68,7 +68,7 @@ with open(outfile, 'w') as fout:
     #     dtypes[dataset_manager.label_col] = "str"  # if classification, preserve and do not interpret dtype of label
 
     data = pd.read_csv(os.path.join(home_dir, logs_dir, train_file), sep=";", dtype=dtypes)
-    data = data.head(30000)
+    #data = data.head(30000)
     data[dataset_manager.timestamp_col] = pd.to_datetime(data[dataset_manager.timestamp_col])
 
     # split data into training and validation sets
@@ -334,16 +334,16 @@ with open(outfile, 'w') as fout:
         detailed_results = pd.concat([detailed_results, current_results], axis=0)
 
         score = {}
-        if len(set(test_y)) < 2:
+        if len(test_y) < 2:
             score = {"score1": 0, "score2": 0}
         else:
             score["mae"] = mean_absolute_error(result["predicted"], result["remtime"])
             score["rmse"] = np.sqrt(mean_squared_error(result["predicted"], result["remtime"]))
 
-        fout.write("%s,%s,%s,%s,%s,%s\n" % (label_col, method_name, cls_method, nr_events,
-                                            list(score)[0], list(score.values())[0]))
-        fout.write("%s,%s,%s,%s,%s,%s\n" % (label_col, method_name, cls_method, nr_events,
-                                            list(score)[1], list(score.values())[1]))
+        fout.write("%s,%s,%s,%s,%s,%s,%s\n" % (dataset_ref, method_name, cls_method, nr_events,
+                                            list(score)[0], list(score.values())[0], len(result["remtime"])))
+        fout.write("%s,%s,%s,%s,%s,%s,%s\n" % (dataset_ref, method_name, cls_method, nr_events,
+                                            list(score)[1], list(score.values())[1], len(result["remtime"])))
 
     print("\n")
 
