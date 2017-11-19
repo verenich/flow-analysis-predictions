@@ -1,0 +1,12 @@
+Log,Nr of cases,Nr of activities,Nr of events,mean events per case,max events per case,"median case duration, days","mean case duration, days"
+bpi12a,12007,10,53952,4.49,8,0.47,7.4
+bpi12o,3487,7,15908,4.56,5,12.9,15
+bpi12w,9650,6,72380,7.5,74,8.5,11.4
+bpi12w_no_dup,9650,6,29391,3.05,13,8.5,11.4
+CreditRequirement,10036,8,80280,8,8,0.88,0.95
+hospital_billing_977,59228,8,330945,5.59,7,124.6,165.2
+traffic_fines_139,81286,10,412738,5.08,9,582,582
+helpdesk,3218,5,10598,3.29,5,2.73,7.3
+minit invoicing,5330,21,66074,12.4,29,1.06,2.35
+disco call center*,867,6,3994,4.61,30,3,9.2
+disco purchasing,545,24,8993,16.5,44,12.8,23.9

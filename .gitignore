@@ -105,3 +105,6 @@ ENV/
 
 # XES event logs
 *.xes
+
+# job output files
+job_*

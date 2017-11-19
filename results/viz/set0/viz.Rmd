@@ -1,0 +1,146 @@
+---
+title: "Flow analysis exploration"
+output: html_notebook
+---
+
+```{r include=FALSE}
+library(plotly)
+library(ggplot2)
+library(extrafont)
+library(gridExtra)
+font_install("fontcm")
+loadfonts()
+```
+
+
+## Event logs studied:
+
+```{r echo=FALSE}
+logs = read.csv("../logs_summary.csv")
+DT::datatable(logs, filter = "top")
+```
+## Training configuration:
+
+* 2/3 x 1/3 temporal split
+* zero bucketing
+* aggregate encoding
+* XGboost with hyperparam optimization (mainly, # of trees)
+
+
+## Surveyed techniques:
+
+* predictive flow analysis (FA)
+* adaptive FA (based on a variable threshold e.g. 30K samples in the training set )
+* mean FA - each cycle time and branching probability is derived based on historical averages
+* simple regression - remaining time is predicted as a single value (comparable to [Massimiliano de Leoni's approach](http://www.sciencedirect.com/science/article/pii/S0306437915001313))
+* [Wil](https://www.researchgate.net/publication/220503961_Time_prediction_based_on_process_mining) and [Andreas Rogge-Solti](https://link.springer.com/chapter/10.1007/978-3-642-45005-1_27) will be added later as additional baselines. LSTM should probably also be added
+
+
+```{r include=FALSE}
+dat = c()
+filenames <- list.files()[grep(paste("^validation_FA_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
+for (filename in filenames) {
+  this = read.csv(filename, sep=",", header = TRUE)
+  this = this[this$metric == "mae",]
+  this$nr_cases = this$nr_cases/sum(this$nr_cases)
+  this$score_weighted = this$score * this$nr_cases
+  this$method2 = "FA"
+  this$method3 = strsplit(filename,"_")[[1]][length(strsplit(filename,"_")[[1]])]
+  this$filename = filename
+  dat = rbind(dat, this)
+}
+```
+
+
+```{r include=FALSE}
+filenames2 <- list.files()[grep(paste("^validation_direct_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
+for (filename in filenames2) {
+  this = read.csv(filename, sep=",", header = TRUE)
+  this = this[this$metric == "mae",]
+  this$nr_cases = this$nr_cases/sum(this$nr_cases)
+  this$score_weighted = this$score * this$nr_cases
+  this$method2 = "regression"
+  this$method3 = strsplit(filename,"_")[[1]][length(strsplit(filename,"_")[[1]])]
+  this$filename = filename
+  dat = rbind(dat, this)
+}
+
+```
+
+```{r echo=FALSE}
+size1 = nrow(dat)
+dat = dat[complete.cases(dat),]
+dat$dataset = droplevels(dat$dataset)
+size2 = nrow(dat)
+if((size1 - size2)/size2 > 0.01)  {
+  print("Warning! More than 1% of incomplete rows")
+}
+```
+
+```{r include=FALSE}
+dat$method3[dat$method3 == "3000000.csv"] = "mean"
+dat$method3[dat$method3 == "30.csv" & dat$method2 == "FA"] = "predictive"
+dat$method3[dat$method3 == "30.csv" & dat$method2 == "regression"] = "simple"
+dat$method3[dat$method3 == "3000.csv"] = "adaptive3000"
+dat$method3[dat$method3 == "30000.csv"] = "adaptive30000"
+
+dat$method4 = paste(dat$method3, dat$method2, dat$method, sep = "_")
+```
+
+
+```{r include=FALSE}
+dat$score = dat$score / (3600*24) # make days
+dat$score_weighted = dat$score_weighted / (3600*24)
+```
+
+## Average MAE across all prefix lengths for all datasets and methods:
+```{r}
+agg_MAE_unw = as.data.frame(aggregate(dat$score,by=list(dataset=dat$dataset, method=dat$method4), mean))
+agg_MAE_w = as.data.frame(aggregate(dat$score_weighted,by=list(dataset=dat$dataset, method=dat$method4), sum))
+agg_MAE_unw[,3] = round(agg_MAE_unw[,3], 3)
+agg_MAE_w[,3] = round(agg_MAE_w[,3], 3)
+colnames(agg_MAE_unw)[3] = "Avg_unweighted_MAE_days"
+colnames(agg_MAE_w)[3] = "Avg_weighted_MAE_days"
+agg_MAE = merge(agg_MAE_w, agg_MAE_unw)
+agg_MAE = agg_MAE[with(agg_MAE, order(dataset, Avg_weighted_MAE_days, method = "radix")), ]
+
+DT::datatable(agg_MAE, filter = "top")
+```
+
+## Plots MAE vs prefix size
+```{r}
+for (df in levels(dat$dataset)) {
+  p = ggplot(dat[dat$dataset == df,], aes(x = nr_events, y = score, color = method4)) + geom_point() + geom_line() + 
+    #facet_wrap(~ dataset, ncol = 3, scales = "free") + 
+    ylab("MAE, days") + xlab("Prefix length")+
+    ggtitle(df)
+    theme(legend.position="top")+
+    theme(panel.background = element_rect(fill = 'white', colour = 'black',size=0.5)) + 
+    theme(panel.grid.major = element_line(colour = 'lightgrey', size = 0.3))+
+  theme(legend.background = element_rect(colour = 'white',size = 0.1, linetype='solid'))+
+  theme(legend.title=element_blank())
+  print(p)
+}
+```
+## Interactive plots can be accessed [here](https://plot.ly/~verenich/79/)
+```{r include=FALSE}
+p = ggplot(dat, aes(x = nr_events, y = score, color = method4)) + geom_point() + geom_line() + 
+  facet_wrap(~ dataset, ncol = 3, scales = "free") + ylab("MAE, days") + xlab("Prefix length")+
+  theme(legend.position="top")+
+    theme(panel.background = element_rect(fill = 'white', colour = 'black',size=0.5)) + 
+    theme(panel.grid.major = element_line(colour = 'lightgrey', size = 0.3))+
+  theme(legend.background = element_rect(colour = 'white',size = 0.1, linetype='solid'))+
+  theme(legend.title=element_blank())
+api_create(p, "flow-analysis-MAE-100-0660", sharing = "public")
+```
+
+```{r include=FALSE}
+pdf(file="results_191117-100-0660.pdf",family="CM Roman",width=12,height=10)
+print(p)
+dev.off()
+embed_fonts("results_191117-100-0660.pdf",outfile="results_191117-100-0660.pdf")
+```
+## To-do:
+
+* [probability calibraion](http://scikit-learn.org/stable/auto_examples/calibration/plot_calibration.html) - may increase prediction accuracy of FA, due to branching probabilities potentially being more reliable.
+* repeat experiments for Disco and minit datasets
