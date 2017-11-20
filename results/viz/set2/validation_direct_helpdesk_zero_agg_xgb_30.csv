@@ -1,0 +1,7 @@
+dataset,method,cls,nr_events,metric,score,nr_cases
+helpdesk,zero_agg,xgb,2,rmse,705940.008948,1025
+helpdesk,zero_agg,xgb,2,mae,463808.69513,1025
+helpdesk,zero_agg,xgb,3,rmse,786096.019323,235
+helpdesk,zero_agg,xgb,3,mae,553777.072739,235
+helpdesk,zero_agg,xgb,4,rmse,401526.74027,13
+helpdesk,zero_agg,xgb,4,mae,287927.194712,13

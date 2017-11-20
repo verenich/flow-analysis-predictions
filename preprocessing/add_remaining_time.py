@@ -16,7 +16,7 @@ columns_to_remove = ["label"]
 case_id_col = "Case ID"
 
 def add_remtime_column(group):
-    group = group.sort_values(timestamp_col, ascending=False)
+    group = group.sort_values(timestamp_col, ascending=False, kind='mergesort')
     end_date = group[timestamp_col].iloc[0]
 
     remtime = end_date - group[timestamp_col]

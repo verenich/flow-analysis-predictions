@@ -1,0 +1,11 @@
+dataset,method,cls,nr_events,metric,score,nr_cases
+hospital_billing_977,zero_combined,xgb,2,rmse,5434544.58206,20137
+hospital_billing_977,zero_combined,xgb,2,mae,3875668.03824,20137
+hospital_billing_977,zero_combined,xgb,3,rmse,9146204.70952,19483
+hospital_billing_977,zero_combined,xgb,3,mae,4580193.65524,19483
+hospital_billing_977,zero_combined,xgb,4,rmse,4853890.63643,19483
+hospital_billing_977,zero_combined,xgb,4,mae,3717632.96903,19483
+hospital_billing_977,zero_combined,xgb,5,rmse,5010058.59545,12138
+hospital_billing_977,zero_combined,xgb,5,mae,3852867.93497,12138
+hospital_billing_977,zero_combined,xgb,6,rmse,5272169.51562,708
+hospital_billing_977,zero_combined,xgb,6,mae,4036596.97093,708
