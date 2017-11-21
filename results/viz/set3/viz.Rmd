@@ -122,7 +122,7 @@ for (df in levels(dat$dataset)) {
   print(p)
 }
 ```
-## Interactive plots can be accessed [here](https://plot.ly/~verenich/83/)
+## Interactive plots can be accessed [here](https://plot.ly/~verenich/85/)
 ```{r include=FALSE}
 p = ggplot(dat, aes(x = nr_events, y = score, color = method4)) + geom_point() + geom_line() + 
   facet_wrap(~ dataset, ncol = 3, scales = "free") + ylab("MAE, days") + xlab("Prefix length")+
@@ -131,14 +131,14 @@ p = ggplot(dat, aes(x = nr_events, y = score, color = method4)) + geom_point() +
     theme(panel.grid.major = element_line(colour = 'lightgrey', size = 0.3))+
   theme(legend.background = element_rect(colour = 'white',size = 0.1, linetype='solid'))+
   theme(legend.title=element_blank())
-api_create(p, "flow-analysis-MAE-500-0660", sharing = "public")
+api_create(p, "flow-analysis-MAE-800-0660", sharing = "public")
 ```
 
 ```{r include=FALSE}
-pdf(file="results_191117-500-0660.pdf",family="CM Roman",width=12,height=10)
+pdf(file="results_191117-800-0660.pdf",family="CM Roman",width=12,height=10)
 print(p)
 dev.off()
-embed_fonts("results_191117-500-0660.pdf",outfile="results_191117-500-0660.pdf")
+embed_fonts("results_191117-800-0660.pdf",outfile="results_191117-800-0660.pdf")
 ```
 ## To-do:
 
