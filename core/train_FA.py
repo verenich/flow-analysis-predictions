@@ -118,6 +118,10 @@ with open(outfile, 'w') as fout:
             print(dt_train_prefixes.shape)
             print(dt_test_prefixes.shape)
 
+            # for branching probabilities always use logistic regression - prob's are more reliable
+            if label_col in dataset_manager.label_cat_cols:
+                cls_method = "logit"
+
             # extract arguments
             bucketer_args = {'encoding_method': bucket_encoding,
                              'case_id_col': dataset_manager.case_id_col,
@@ -183,6 +187,9 @@ with open(outfile, 'w') as fout:
                 # importances = importances.sort_values(by='Gini-importance', ascending=False)
                 # importances.to_csv(os.path.join(home_dir, feature_importance_dir, "feat_importance_%s_%s_%s_%s_%s.csv" %
                 #                                 (dataset_ref, method_name, cls_method, label_col, bucket)))
+
+            if label_col in dataset_manager.label_cat_cols:  # set it back
+                cls_method = argv[4]
 
             pickle_file = os.path.join(home_dir, pickles_dir,
                                        '%s_%s_%s_%s_%s.pkl' % (dataset_ref, method_name, cls_method, label_col, n_min_cases_in_bucket))
