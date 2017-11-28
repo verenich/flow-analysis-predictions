@@ -211,6 +211,11 @@ with open(outfile, 'w') as fout:
                     else:
                         # make actual predictions
                         preds_bucket = pipelines[bucket].predict_proba(dt_test_bucket)
+                        # if only one class is present in predictions
+                        if mode == "class" and pipelines[bucket]._final_estimator.hardcoded_prediction is not None:
+                            tmp = np.zeros((len(preds_bucket), gateway_exits[label_col]))
+                            tmp[:, preds_bucket[0]] = np.ones(len(preds_bucket))
+                            preds_bucket = tmp
 
                     if mode == "regr":
                         # if cycle time is predicted to be negative, make it zero

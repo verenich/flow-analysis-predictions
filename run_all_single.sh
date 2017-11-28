@@ -10,15 +10,15 @@ do
             do
                 if [ $DATASET_NAME == "hospital_billing_977.csv" ] ; then
                     memory=20gb
-                    niter=15
+                    niter=16
                 elif [ $DATASET_NAME == "traffic_fines_139.csv" ] ; then
                     memory=20gb
-                    niter=15
+                    niter=16
                 else
                     memory=4gb
-                    niter=40
+                    niter=50
                 fi
-                qsub -l mem=$memory -l walltime=40:00:00 -N job_"$DATASET_NAME"_"$METHOD"_"$CLS_ENCODING"_"$MIN_CASES" -v dataset=$DATASET_NAME,encoding=$CLS_ENCODING,min_cases=$MIN_CASES,niter=$niter run_$METHOD.sh
+                qsub -l mem=$memory -l walltime=44:00:00 -N job_"$DATASET_NAME"_"$METHOD"_"$CLS_ENCODING"_"$MIN_CASES" -v dataset=$DATASET_NAME,encoding=$CLS_ENCODING,min_cases=$MIN_CASES,niter=$niter run_$METHOD.sh
             done
         done
     done

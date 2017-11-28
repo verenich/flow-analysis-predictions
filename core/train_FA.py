@@ -262,8 +262,6 @@ with open(outfile, 'w') as fout:
                         preds_bucket2[:,preds_bucket[0]] = np.ones(len(preds_bucket))
                         preds_bucket = preds_bucket2
                     case_ids_bucket = dataset_manager.get_indexes(dt_test_bucket)
-                    if pipelines[bucket]._final_estimator.mean_prediction is not None:
-                        preds_bucket = np.array(preds_bucket)
 
                 # if some branches were not present in the training set, thus are never predicted
                 if mode == "class" and preds_bucket.shape[1] != gateway_exits[label_col]:
