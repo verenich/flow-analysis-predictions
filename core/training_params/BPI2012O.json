@@ -2,23 +2,23 @@
    "O_ACCEPTED": {
       "zero_agg": {
          "xgb": {
-            "n_estimators": 212,
-            "learning_rate": 0.0480621263899,
-            "subsample": 0.966647138566,
-            "max_depth": 3,
-            "colsample_bytree": 0.536985039414,
-            "min_child_weight": 2
+            "n_estimators": 841,
+            "learning_rate": 0.06354212566518012,
+            "subsample": 0.8234524495368658,
+            "max_depth": 6,
+            "colsample_bytree": 0.4654574690575823,
+            "min_child_weight": 1
          }
       }
    },
    "O_CANCELLED": {
       "zero_agg": {
          "xgb": {
-            "n_estimators": 548,
-            "learning_rate": 0.026062772059900003,
-            "subsample": 0.7105529976880001,
-            "max_depth": 5,
-            "colsample_bytree": 0.6743619611920001,
+            "n_estimators": 978,
+            "learning_rate": 0.026300631735561124,
+            "subsample": 0.5018074093165541,
+            "max_depth": 3,
+            "colsample_bytree": 0.9192771824087852,
             "min_child_weight": 1
          }
       }
@@ -26,11 +26,11 @@
    "O_DECLINED": {
       "zero_agg": {
          "xgb": {
-            "n_estimators": 370,
-            "learning_rate": 0.0142198936537,
-            "subsample": 0.8650104329989999,
-            "max_depth": 3,
-            "colsample_bytree": 0.995753509363,
+            "n_estimators": 560,
+            "learning_rate": 0.03453431917361553,
+            "subsample": 0.9091940479579614,
+            "max_depth": 7,
+            "colsample_bytree": 0.9089572421935536,
             "min_child_weight": 1
          }
       }
@@ -38,35 +38,23 @@
    "O_SENT": {
       "zero_agg": {
          "xgb": {
-            "n_estimators": 757,
-            "learning_rate": 0.06683919551659999,
-            "subsample": 0.585027849896,
-            "max_depth": 3,
-            "colsample_bytree": 0.6497484209359999,
-            "min_child_weight": 1
+            "n_estimators": 886,
+            "learning_rate": 0.06849088421795486,
+            "subsample": 0.9592379210049096,
+            "max_depth": 8,
+            "colsample_bytree": 0.8710859409269724,
+            "min_child_weight": 2
          }
       }
    },
    "O_SENT_BACK": {
       "zero_agg": {
          "xgb": {
-            "n_estimators": 272,
-            "learning_rate": 0.0268988959235,
-            "subsample": 0.5495583994100001,
-            "max_depth": 8,
-            "colsample_bytree": 0.978245196763,
-            "min_child_weight": 1
-         }
-      }
-   },
-   "remtime": {
-      "zero_agg": {
-         "xgb": {
-            "n_estimators": 329,
-            "learning_rate": 0.0100361622091,
-            "subsample": 0.969430738286,
-            "max_depth": 8,
-            "colsample_bytree": 0.554676098179,
+            "n_estimators": 736,
+            "learning_rate": 0.04647260535786887,
+            "subsample": 0.7882277441270402,
+            "max_depth": 6,
+            "colsample_bytree": 0.5875730194406109,
             "min_child_weight": 2
          }
       }
@@ -74,11 +62,11 @@
    "x11": {
       "zero_agg": {
          "xgb": {
-            "n_estimators": 565,
-            "learning_rate": 0.0241678448548,
-            "subsample": 0.9552309645999999,
-            "max_depth": 7,
-            "colsample_bytree": 0.605689302618,
+            "n_estimators": 914,
+            "learning_rate": 0.06445717453761006,
+            "subsample": 0.7008732727552538,
+            "max_depth": 6,
+            "colsample_bytree": 0.8595360323929293,
             "min_child_weight": 1
          }
       }
@@ -86,12 +74,12 @@
    "x21": {
       "zero_agg": {
          "xgb": {
-            "n_estimators": 77,
-            "learning_rate": 0.03813540168480001,
-            "subsample": 0.722451358653,
-            "max_depth": 3,
-            "colsample_bytree": 0.51579431137,
-            "min_child_weight": 2
+            "n_estimators": 902,
+            "learning_rate": 0.06131685471670657,
+            "subsample": 0.6222920047474445,
+            "max_depth": 7,
+            "colsample_bytree": 0.628231577729663,
+            "min_child_weight": 1
          }
       }
    }

@@ -213,10 +213,20 @@ with open(outfile, 'w') as fout:
                         preds_bucket = pipelines[bucket].predict_proba(dt_test_bucket)
 
                     if mode == "regr":
-                        preds_bucket = preds_bucket.clip(min=0)  # if cycle time is predicted to be negative, make it zero
-                    # elif mode == "class":
-                    #     preds_bucket = preds_bucket.argmax(axis=1)  # for multi-class, choose likeliest class
-                    preds.extend(preds_bucket.round())
+                        # if cycle time is predicted to be negative, make it zero
+                        preds_bucket = preds_bucket.clip(min=0)
+                    elif preds_bucket.shape[1] != gateway_exits[label_col]:
+                        # if some branches were not present in the training set, thus are never predicted
+                        classes_as_is = pipelines[bucket]._final_estimator.cls.classes_
+                        tmp = np.zeros((len(preds_bucket), gateway_exits[label_col]))
+                        ii = 0
+                        for class_to_be in np.arange(gateway_exits[label_col]):
+                            if class_to_be in classes_as_is:
+                                tmp[:, class_to_be] = preds_bucket[:, ii]
+                                ii += 1
+                        preds_bucket = tmp
+
+                    preds.extend(preds_bucket)
 
                     # extract actual label values
                     test_y_bucket = dataset_manager.get_label(dt_test_bucket, label_col=label_col, mode=mode)  # one row per case
