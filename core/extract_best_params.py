@@ -17,9 +17,9 @@ training_params_dir = "core/training_params/"
 files = glob.glob("%s/CV_%s_*" % (cv_results_dir, dataset_ref))
 files = [file for file in files if os.path.getsize(file) > 0]
 
-data = pd.read_csv(files[0], sep=",")
+data = pd.read_csv(files[0], sep=";")
 for file in files[1:]:
-    tmp = pd.read_csv(file, sep=",")
+    tmp = pd.read_csv(file, sep=";")
     data = pd.concat([data, tmp], axis=0)
 
 # fix cases where score is unknown
@@ -33,7 +33,7 @@ data.fillna(0, inplace=True)
 
 # extract columns that refer to parameters
 params_cols = [col for col in data.columns if
-               col not in ['cls', 'label_col', 'method', 'metric', 'nr_events', 'part', 'score']]
+               col not in ['cls', 'label_col', 'method', 'metric', 'nr_events', 'score']]
 
 # aggregate data over all CV folds
 data_agg = data.groupby(["cls", "label_col", "method", "metric", "nr_events"] + params_cols, as_index=False)[
@@ -43,18 +43,18 @@ data_agg_over_all_prefixes = data.groupby(["cls", "label_col", "method", "metric
 
 # select best params according to MAE only (for regression) and AUC only (for classification)
 data_regr_agg = data_agg[data_agg.metric == "mae"]
-data_class_agg = data_agg[data_agg.metric == "auc"]
+data_class_agg = data_agg[data_agg.metric == "logloss"]
 data_regr_agg_over_all_prefixes = data_agg_over_all_prefixes[data_agg_over_all_prefixes.metric == "mae"]
-data_class_agg_over_all_prefixes = data_agg_over_all_prefixes[data_agg_over_all_prefixes.metric == "auc"]
+data_class_agg_over_all_prefixes = data_agg_over_all_prefixes[data_agg_over_all_prefixes.metric == "logloss"]
 
 # select the best params - lowest MAE or highest AUC
 data_regr_best = data_regr_agg.sort_values("score", ascending=True).groupby(["cls", "label_col", "method", "metric", "nr_events"],
                                                                   as_index=False).first()
 data_regr_best_over_all_prefixes = data_regr_agg_over_all_prefixes.sort_values("score", ascending=True).groupby(
     ["cls", "label_col", "method", "metric"], as_index=False).first()
-data_class_best = data_class_agg.sort_values("score", ascending=False).groupby(["cls", "label_col", "method", "metric", "nr_events"],
+data_class_best = data_class_agg.sort_values("score", ascending=True).groupby(["cls", "label_col", "method", "metric", "nr_events"],
                                                                   as_index=False).first()
-data_class_best_over_all_prefixes = data_class_agg_over_all_prefixes.sort_values("score", ascending=False).groupby(
+data_class_best_over_all_prefixes = data_class_agg_over_all_prefixes.sort_values("score", ascending=True).groupby(
     ["cls", "label_col", "method", "metric"], as_index=False).first()
 
 data_best = pd.concat([data_regr_best, data_class_best], axis=0)
@@ -75,11 +75,9 @@ for row in data_best_over_all_prefixes[~data_best_over_all_prefixes.method.str.c
 
     for i, param in enumerate(params_cols):
         value = row[3 + i]
-        if param == "max_features":
-            value = value if value == "sqrt" else float(value)
-        elif param in ["n_clusters", "n_estimators", "max_depth"]:
+        if param in ["n_estimators", "max_depth", "min_child_weight"]:
             value = int(value)
-        elif param == "learning_rate":
+        else:
             value = float(value)
 
         best_params[row[0]][row[1]][row[2]][param] = value
@@ -99,11 +97,9 @@ for row in data_best[data_best.method.str.contains("prefix")][
 
     for i, param in enumerate(params_cols):
         value = row[4 + i]
-        if param == "max_features":
-            value = value if value == "sqrt" else float(value)
-        elif param in ["n_clusters", "n_estimators", "max_depth"]:
+        if param in ["n_estimators", "max_depth", "min_child_weight"]:
             value = int(value)
-        elif param == "learning_rate":
+        else:
             value = float(value)
 
         best_params[row[0]][row[1]][row[2]][row[3]][param] = value

@@ -71,7 +71,7 @@ with open(outfile, 'w') as fout:
     #data = data.head(30000)
     data[dataset_manager.timestamp_col] = pd.to_datetime(data[dataset_manager.timestamp_col])
 
-    # split data into training and validation sets
+    # split data into training and test sets
     train_, test = dataset_manager.split_data(data, train_ratio=0.660)
     # train = train.sort_values(dataset_manager.timestamp_col, ascending=True, kind='mergesort')
 
@@ -123,10 +123,7 @@ with open(outfile, 'w') as fout:
                              'case_id_col': dataset_manager.case_id_col,
                              'cat_cols': [dataset_manager.activity_col],
                              'num_cols': [],
-                             'n_clusters': None,
                              'random_state': random_state}
-            if bucket_method == "cluster":
-                bucketer_args['n_clusters'] = best_params["remtime"][method_name][cls_method]['n_clusters']
 
             cls_encoder_args = {'case_id_col': dataset_manager.case_id_col,
                                 'static_cat_cols': dataset_manager.static_cat_cols,
@@ -148,14 +145,13 @@ with open(outfile, 'w') as fout:
 
                 # set optimal params for this bucket
                 if bucket_method == "prefix":
-                    cls_args = {k: v for k, v in best_params["remtime"][method_name][cls_method][u'%s' % bucket].items() if
-                                k not in ['n_clusters']} # use remtime's hyperparameters, no need to create separate parameters for each activity
+                    cls_args = best_params[label_col][method_name][cls_method][u'%s' % bucket]  # use remtime's hyperparameters, no need to create separate parameters for each activity
                 else:
-                    cls_args = {k: v for k, v in best_params["remtime"][method_name][cls_method].items() if
-                                k not in ['n_clusters']}
+                    cls_args = best_params[label_col][method_name][cls_method]
                 cls_args['mode'] = mode
                 cls_args['random_state'] = random_state
                 cls_args['min_cases_for_training'] = n_min_cases_in_bucket
+                #print("Cls params are: %s" % str(list(cls_args.values())))
 
                 # select relevant cases
                 relevant_cases_bucket = dataset_manager.get_indexes(dt_train_prefixes)[bucket_assignments_train == bucket]
@@ -255,7 +251,7 @@ with open(outfile, 'w') as fout:
                     # classification - use the historical class ratio
                     print("Bucket is not in pipeline, defaulting to averages")
                     avg_target_value = [np.mean(target_df_[label_col])] if mode == "regr" else [
-                        dataset_manager.get_class_ratio2(target_df_, label_col=label_col)]
+                        dataset_manager.get_class_ratio(target_df_, label_col=label_col)]
                     preds_bucket = avg_target_value * len(relevant_cases_bucket)
 
                 else:

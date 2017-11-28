@@ -60,12 +60,16 @@ class DatasetManager:
         group[label_col] = "false" if case_duration < threshold else "true"
         return group
 
-    def split_data(self, data, train_ratio):
-        # split into train and test using temporal split
+    def split_data(self, data, train_ratio, split="temporal", seed=22):
+        # split into train and test using temporal or random split
 
         grouped = data.groupby(self.case_id_col)
         start_timestamps = grouped[self.timestamp_col].min().reset_index()
-        start_timestamps = start_timestamps.sort_values(self.timestamp_col, ascending=True, kind='mergesort')
+        if split == "temporal":
+            start_timestamps = start_timestamps.sort_values(self.timestamp_col, ascending=True, kind='mergesort')
+        elif split == "random":
+            np.random.seed(seed)
+            start_timestamps = start_timestamps.reindex(np.random.permutation(start_timestamps.index))
         train_ids = list(start_timestamps[self.case_id_col])[:int(np.ceil(train_ratio*len(start_timestamps)))]
         train = data[data[self.case_id_col].isin(train_ids)].sort_values(self.timestamp_col, ascending=True, kind='mergesort')
         test = data[~data[self.case_id_col].isin(train_ids)].sort_values(self.timestamp_col, ascending=True, kind='mergesort')

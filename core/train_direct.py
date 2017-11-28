@@ -76,7 +76,7 @@ with open(outfile, 'w') as fout:
         print("column %s does not exist in the log, let's create it" % label_col)
         data = data.groupby(dataset_manager.case_id_col, as_index=False).apply(dataset_manager.add_remtime)
 
-    # split data into training and validation sets
+    # split data into training and test sets
     train, test = dataset_manager.split_data(data, train_ratio=0.660)
     # train = train.sort_values(dataset_manager.timestamp_col, ascending=True, kind='mergesort')
 
@@ -102,10 +102,7 @@ with open(outfile, 'w') as fout:
                          'case_id_col': dataset_manager.case_id_col,
                          'cat_cols': [dataset_manager.activity_col],
                          'num_cols': [],
-                         'n_clusters': None,
                          'random_state': random_state}
-        if bucket_method == "cluster":
-            bucketer_args['n_clusters'] = best_params[label_col][method_name][cls_method]['n_clusters']
 
         cls_encoder_args = {'case_id_col': dataset_manager.case_id_col,
                             'static_cat_cols': dataset_manager.static_cat_cols,
@@ -127,11 +124,9 @@ with open(outfile, 'w') as fout:
 
             # set optimal params for this bucket
             if bucket_method == "prefix":
-                cls_args = {k: v for k, v in best_params[label_col][method_name][cls_method][u'%s' % bucket].items() if
-                            k not in ['n_clusters']}
+                cls_args = best_params[label_col][method_name][cls_method][u'%s' % bucket]
             else:
-                cls_args = {k: v for k, v in best_params[label_col][method_name][cls_method].items() if
-                            k not in ['n_clusters']}
+                cls_args = best_params[label_col][method_name][cls_method]
             cls_args['mode'] = mode
             cls_args['random_state'] = random_state
             cls_args['min_cases_for_training'] = n_min_cases_in_bucket
