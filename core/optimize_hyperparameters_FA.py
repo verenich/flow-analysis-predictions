@@ -45,7 +45,7 @@ fillna = True
 cls_params_names = ['n_estimators', 'learning_rate', 'subsample', 'max_depth', 'colsample_bytree', 'min_child_weight']
 
 ##### MAIN PART ######
-detailed_results = pd.DataFrame()
+
 with open(outfile, 'w') as fout:
     fout.write("%s;%s;%s;%s;%s;%s;%s\n" % ("label_col", "method", "cls", ";".join(cls_params_names), "nr_events", "metric", "score"))
 
