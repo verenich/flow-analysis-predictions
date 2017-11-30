@@ -43,9 +43,9 @@ method_name = "%s_%s" % (bucket_method, cls_encoding)
 methods = encoding_dict[cls_encoding]
 
 outfile = os.path.join(home_dir, results_dir,
-                       "validation_FA_%s_%s_%s_%s.csv" % (dataset_ref, method_name, cls_method, n_min_cases_in_bucket))
+                       "validation_FA2_%s_%s_%s_%s.csv" % (dataset_ref, method_name, cls_method, n_min_cases_in_bucket))
 detailed_results_file = os.path.join(home_dir, detailed_results_dir,
-                       "validation_FA_%s_%s_%s_%s.csv" % (dataset_ref, method_name, cls_method, n_min_cases_in_bucket))
+                       "validation_FA2_%s_%s_%s_%s.csv" % (dataset_ref, method_name, cls_method, n_min_cases_in_bucket))
 
 random_state = 22
 fillna = True
@@ -263,8 +263,11 @@ with open(outfile, 'w') as fout:
                         preds_bucket = preds_bucket2
                     case_ids_bucket = dataset_manager.get_indexes(dt_test_bucket)
 
-                # if some branches were not present in the training set, thus are never predicted
-                if mode == "class" and preds_bucket.shape[1] != gateway_exits[label_col]:
+                if mode == "regr":
+                    # if cycle time is predicted to be negative, make it zero
+                    preds_bucket = preds_bucket.clip(min=0)
+                elif preds_bucket.shape[1] != gateway_exits[label_col]:
+                    # if some branches were not present in the training set, thus are never predicted
                     if pipelines[bucket]._final_estimator.mean_prediction is not None:
                         classes_as_is = pipelines[bucket]._final_estimator.mean_prediction.index
                     else:

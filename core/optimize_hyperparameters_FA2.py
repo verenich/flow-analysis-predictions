@@ -246,13 +246,16 @@ with open(outfile, 'w') as fout:
                         # make actual predictions
                         preds_bucket = pipelines[bucket].predict_proba(dt_test_bucket)
                         if mode == "class" and pipelines[bucket]._final_estimator.hardcoded_prediction is not None:
-                            preds_bucket2 = np.zeros((len(preds_bucket), gateway_exits[label_col]))
-                            preds_bucket2[:,preds_bucket[0]] = np.ones(len(preds_bucket))
-                            preds_bucket = preds_bucket2
+                            tmp = np.zeros((len(preds_bucket), gateway_exits[label_col]))
+                            tmp[:,preds_bucket[0]] = np.ones(len(preds_bucket))
+                            preds_bucket = tmp
                         case_ids_bucket = dataset_manager.get_indexes(dt_test_bucket)
 
-                    # if some branches were not present in the training set, thus are never predicted
-                    if mode == "class" and preds_bucket.shape[1] != gateway_exits[label_col]:
+                    if mode == "regr":
+                        # if cycle time is predicted to be negative, make it zero
+                        preds_bucket = preds_bucket.clip(min=0)
+                    elif preds_bucket.shape[1] != gateway_exits[label_col]:
+                        # if some branches were not present in the training set, thus are never predicted
                         if pipelines[bucket]._final_estimator.mean_prediction is not None:
                             classes_as_is = pipelines[bucket]._final_estimator.mean_prediction.index
                         else:

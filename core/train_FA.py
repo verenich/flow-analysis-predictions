@@ -263,8 +263,11 @@ with open(outfile, 'w') as fout:
                         preds_bucket = preds_bucket2
                     case_ids_bucket = dataset_manager.get_indexes(dt_test_bucket)
 
-                # if some branches were not present in the training set, thus are never predicted
-                if mode == "class" and preds_bucket.shape[1] != gateway_exits[label_col]:
+                if mode == "regr":
+                    # if cycle time is predicted to be negative, make it zero
+                    preds_bucket = preds_bucket.clip(min=0)
+                elif preds_bucket.shape[1] != gateway_exits[label_col]:
+                    # if some branches were not present in the training set, thus are never predicted
                     if pipelines[bucket]._final_estimator.mean_prediction is not None:
                         classes_as_is = pipelines[bucket]._final_estimator.mean_prediction.index
                     else:
