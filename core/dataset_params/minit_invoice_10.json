@@ -1,0 +1,54 @@
+{
+  "case_id_col": "Case ID",
+  "activity_col": "Activity",
+  "timestamp_col": "Complete Timestamp",
+  "dynamic_cat_cols": [
+    "Activity",
+    "Resource",
+    "ActivityFinalAction",
+    "EventType",
+    "weekday",
+    "hour"
+  ],
+  "static_cat_cols": [
+    "CostCenter.Code",
+    "Supplier.City",
+    "Supplier.Name",
+    "Supplier.State"
+  ],
+  "dynamic_num_cols": [
+    "open_cases",
+    "timesincelastevent",
+    "timesincecasestart",
+    "event_nr"
+  ],
+  "static_num_cols": [
+    "InvoiceTotalAmountWithoutVAT"
+  ],
+  "regression_activities": [
+    "Status_change_to_Being_Approved",
+    "Check_order_numbers",
+    "Compare_of_sums",
+    "Check_cost_center",
+    "Get_lowest_approval_level",
+    "Approving_on_specific_level",
+    "Manual_identification_CC",
+    "Manual_enter_the_order_number",
+    "Check_whether_the_total_approval",
+    "Shift_to_higher_level",
+    "Status_change_to_Accounted",
+    "Process_end",
+    "Status_change_to_Approved",
+    "Invoice_accounting_confirmation",
+    "Invoice_accounting"
+  ],
+  "gateways": [
+    "x11",
+    "x21",
+    "x31",
+    "x41",
+    "x51",
+    "x61"
+  ],
+  "max_prefix_length": 20
+}
