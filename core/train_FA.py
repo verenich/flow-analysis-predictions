@@ -19,6 +19,7 @@ bucket_method = argv[2]
 cls_encoding = argv[3]
 cls_method = argv[4]
 n_min_cases_in_bucket = int(argv[5])
+optimization_type = argv[6]  # FA - each activity separately, FA2 - all together ("remtime2")
 
 dataset_ref = os.path.splitext(train_file)[0]
 home_dirs = os.environ['PYTHONPATH'].split(":")
@@ -43,9 +44,9 @@ method_name = "%s_%s" % (bucket_method, cls_encoding)
 methods = encoding_dict[cls_encoding]
 
 outfile = os.path.join(home_dir, results_dir,
-                       "validation_FA_%s_%s_%s_%s.csv" % (dataset_ref, method_name, cls_method, n_min_cases_in_bucket))
+                       "validation_%s_%s_%s_%s_%s.csv" % (optimization_type, dataset_ref, method_name, cls_method, n_min_cases_in_bucket))
 detailed_results_file = os.path.join(home_dir, detailed_results_dir,
-                       "validation_FA_%s_%s_%s_%s.csv" % (dataset_ref, method_name, cls_method, n_min_cases_in_bucket))
+                       "validation_%s_%s_%s_%s_%s.csv" % (optimization_type, dataset_ref, method_name, cls_method, n_min_cases_in_bucket))
 
 random_state = 22
 fillna = True
@@ -72,7 +73,7 @@ with open(outfile, 'w') as fout:
     data[dataset_manager.timestamp_col] = pd.to_datetime(data[dataset_manager.timestamp_col])
 
     # split data into training and test sets
-    train_, test = dataset_manager.split_data(data, train_ratio=0.660)
+    train_, test = dataset_manager.split_data(data, train_ratio=0.8)
     # train = train.sort_values(dataset_manager.timestamp_col, ascending=True, kind='mergesort')
 
     # consider prefix lengths until 90th percentile of case length
@@ -139,15 +140,20 @@ with open(outfile, 'w') as fout:
 
             pipelines = {}
 
+            if optimization_type == "FA":
+                key_id = label_col
+            elif optimization_type == "FA2":
+                key_id = "remtime2"
+
             # train and fit pipeline for each bucket
             for bucket in set(bucket_assignments_train):
                 print("Fitting pipeline for bucket %s..." % bucket)
 
                 # set optimal params for this bucket
                 if bucket_method == "prefix":
-                    cls_args = best_params[label_col][method_name][cls_method][u'%s' % bucket]  # use remtime's hyperparameters, no need to create separate parameters for each activity
+                    cls_args = best_params[key_id][method_name][cls_method][u'%s' % bucket]  # use remtime's hyperparameters, no need to create separate parameters for each activity
                 else:
-                    cls_args = best_params[label_col][method_name][cls_method]
+                    cls_args = best_params[key_id][method_name][cls_method]
                 cls_args['mode'] = mode
                 cls_args['random_state'] = random_state
                 cls_args['min_cases_for_training'] = n_min_cases_in_bucket
