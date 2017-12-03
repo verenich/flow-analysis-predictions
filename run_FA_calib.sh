@@ -20,4 +20,4 @@ cd /home/n9334378/new-flow-analysis2/core/
 #echo "finished hyperparameter optimization at $(date)"
 #python extract_best_params.py $dataset
 echo "started experiments with optimal parameters FA at $(date)"
-python train_FA.py $dataset zero combined xgb $min_cases $optim_type
+python train_FA_calib.py $dataset zero combined xgb $min_cases $optim_type

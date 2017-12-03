@@ -24,11 +24,11 @@
    "remtime2": {
       "zero_combined": {
          "xgb": {
-            "n_estimators": 121,
-            "learning_rate": 0.022192147185730083,
-            "subsample": 0.8200316927148726,
+            "n_estimators": 200,
+            "learning_rate": 0.02,
+            "subsample": 0.8,
             "max_depth": 6,
-            "colsample_bytree": 0.5023492097725625,
+            "colsample_bytree": 0.7,
             "min_child_weight": 2
          }
       },
