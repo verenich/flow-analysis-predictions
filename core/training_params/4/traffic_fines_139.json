@@ -1,0 +1,192 @@
+{
+   "Add_penalty": {
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 420,
+            "learning_rate": 0.01811393287867716,
+            "subsample": 0.9538488719975312,
+            "max_depth": 3,
+            "colsample_bytree": 0.7572842485397275,
+            "min_child_weight": 2
+         }
+      }
+   },
+   "Insert_Date_Appeal_to_Prefecture": {
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 957,
+            "learning_rate": 0.027053572960538636,
+            "subsample": 0.6912806717807358,
+            "max_depth": 5,
+            "colsample_bytree": 0.8243422425226146,
+            "min_child_weight": 1
+         }
+      }
+   },
+   "Insert_Fine_Notification": {
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 84,
+            "learning_rate": 0.023058188265053327,
+            "subsample": 0.5039671614285928,
+            "max_depth": 4,
+            "colsample_bytree": 0.9712921808246016,
+            "min_child_weight": 2
+         }
+      }
+   },
+   "Notify_Result_Appeal_to_Offender": {
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 92,
+            "learning_rate": 0.01921349926604911,
+            "subsample": 0.99400691032452,
+            "max_depth": 6,
+            "colsample_bytree": 0.6375352004592295,
+            "min_child_weight": 2
+         }
+      }
+   },
+   "Payment": {
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 123,
+            "learning_rate": 0.0206042363200266,
+            "subsample": 0.5685231575174441,
+            "max_depth": 4,
+            "colsample_bytree": 0.5506871777519343,
+            "min_child_weight": 1
+         }
+      }
+   },
+   "Receive_Result_Appeal_from_Prefecture": {
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 73,
+            "learning_rate": 0.02106099205885215,
+            "subsample": 0.8966325915319582,
+            "max_depth": 3,
+            "colsample_bytree": 0.6356327550424208,
+            "min_child_weight": 2
+         }
+      }
+   },
+   "Send_Appeal_to_Prefecture": {
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 873,
+            "learning_rate": 0.024817613881381057,
+            "subsample": 0.6018602151560425,
+            "max_depth": 4,
+            "colsample_bytree": 0.8844846996908091,
+            "min_child_weight": 1
+         }
+      }
+   },
+   "Send_for_Credit_Collection": {
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 61,
+            "learning_rate": 0.03768937254625745,
+            "subsample": 0.6584161378641594,
+            "max_depth": 6,
+            "colsample_bytree": 0.7563003847322567,
+            "min_child_weight": 1
+         }
+      }
+   },
+   "remtime": {
+      "zero_combined": {
+         "xgb": {
+            "n_estimators": 545,
+            "learning_rate": 0.01423491619203354,
+            "subsample": 0.614886753565411,
+            "max_depth": 3,
+            "colsample_bytree": 0.5415173466724461,
+            "min_child_weight": 2
+         }
+      },
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 303,
+            "learning_rate": 0.01261598732226182,
+            "subsample": 0.9391331285804074,
+            "max_depth": 7,
+            "colsample_bytree": 0.4305966242339041,
+            "min_child_weight": 1
+         }
+      }
+   },
+   "x11": {
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 363,
+            "learning_rate": 0.04442643666257602,
+            "subsample": 0.6187735359048369,
+            "max_depth": 8,
+            "colsample_bytree": 0.7086435016798539,
+            "min_child_weight": 2
+         }
+      }
+   },
+   "x21": {
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 867,
+            "learning_rate": 0.061498741546959175,
+            "subsample": 0.7021001669323934,
+            "max_depth": 3,
+            "colsample_bytree": 0.5357682689384065,
+            "min_child_weight": 2
+         }
+      }
+   },
+   "x31": {
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 202,
+            "learning_rate": 0.03914295128115832,
+            "subsample": 0.6877507066453359,
+            "max_depth": 5,
+            "colsample_bytree": 0.6655613024576423,
+            "min_child_weight": 1
+         }
+      }
+   },
+   "x41": {
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 86,
+            "learning_rate": 0.02970483524547171,
+            "subsample": 0.7243917720379536,
+            "max_depth": 3,
+            "colsample_bytree": 0.4263694117839831,
+            "min_child_weight": 1
+         }
+      }
+   },
+   "x51": {
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 271,
+            "learning_rate": 0.028938338286887636,
+            "subsample": 0.8580879525031228,
+            "max_depth": 4,
+            "colsample_bytree": 0.6030898122410224,
+            "min_child_weight": 2
+         }
+      }
+   },
+   "x61": {
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 57,
+            "learning_rate": 0.011429745490603173,
+            "subsample": 0.5461511987398224,
+            "max_depth": 5,
+            "colsample_bytree": 0.6255041202278545,
+            "min_child_weight": 1
+         }
+      }
+   }
+}

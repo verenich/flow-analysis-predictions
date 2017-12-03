@@ -1,0 +1,24 @@
+{
+   "remtime": {
+      "zero_combined": {
+         "xgb": {
+            "n_estimators": 236,
+            "learning_rate": 0.040384611595279236,
+            "subsample": 0.6293095625926115,
+            "max_depth": 6,
+            "colsample_bytree": 0.9771512681672634,
+            "min_child_weight": 2
+         }
+      },
+      "zero_laststate": {
+         "xgb": {
+            "n_estimators": 325,
+            "learning_rate": 0.04691467688559927,
+            "subsample": 0.7220368812478477,
+            "max_depth": 7,
+            "colsample_bytree": 0.4895044475341172,
+            "min_child_weight": 2
+         }
+      }
+   }
+}

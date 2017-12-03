@@ -1,0 +1,15 @@
+dataset,method,cls,nr_events,metric,score,nr_cases
+traffic_fines_139,zero_laststate,xgb,2,mae,17542301.0212,27637
+traffic_fines_139,zero_laststate,xgb,2,rmse,22009410.737,27637
+traffic_fines_139,zero_laststate,xgb,3,mae,17008584.9745,27364
+traffic_fines_139,zero_laststate,xgb,3,rmse,21689227.7958,27364
+traffic_fines_139,zero_laststate,xgb,4,mae,15741655.6752,27364
+traffic_fines_139,zero_laststate,xgb,4,rmse,20467137.0488,27364
+traffic_fines_139,zero_laststate,xgb,5,mae,18819663.5549,3495
+traffic_fines_139,zero_laststate,xgb,5,rmse,25457777.9873,3495
+traffic_fines_139,zero_laststate,xgb,6,mae,13401074.386,57
+traffic_fines_139,zero_laststate,xgb,6,rmse,16359486.8465,57
+traffic_fines_139,zero_laststate,xgb,7,mae,13029114.5789,57
+traffic_fines_139,zero_laststate,xgb,7,rmse,15814666.6317,57
+traffic_fines_139,zero_laststate,xgb,8,mae,12489028.6842,57
+traffic_fines_139,zero_laststate,xgb,8,rmse,15328719.9814,57
