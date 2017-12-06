@@ -1,7 +1,7 @@
 dataset,method,cls,nr_events,metric,score,nr_cases
-BPI2012O,zero_laststate,xgb,2,mae,721568.190773,697
-BPI2012O,zero_laststate,xgb,2,rmse,857782.160194,697
-BPI2012O,zero_laststate,xgb,3,mae,533811.729567,546
-BPI2012O,zero_laststate,xgb,3,rmse,629122.411144,546
-BPI2012O,zero_laststate,xgb,4,mae,214728.294078,352
-BPI2012O,zero_laststate,xgb,4,rmse,261244.079191,352
+BPI2012O,zero_laststate,xgb,2,mae,679367.967774,1185
+BPI2012O,zero_laststate,xgb,2,rmse,820839.371317,1185
+BPI2012O,zero_laststate,xgb,3,mae,573811.514023,1034
+BPI2012O,zero_laststate,xgb,3,rmse,695895.259223,1034
+BPI2012O,zero_laststate,xgb,4,mae,220868.934576,652
+BPI2012O,zero_laststate,xgb,4,rmse,304631.602146,652

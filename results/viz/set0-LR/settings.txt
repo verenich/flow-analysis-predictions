@@ -1,6 +1,0 @@
-xgboost - 100 trees (for all datasets)
-train ration = 0.660
-
-solver = liblinear
-[max_iter=50]
-multi_class = ovr

@@ -1,3 +1,0 @@
-dataset,method,cls,nr_events,metric,score,nr_cases
-BPI2012W_no_dup,zero_agg,xgb,2,mae,648759.569839,1731
-BPI2012W_no_dup,zero_agg,xgb,2,rmse,831862.706821,1731

@@ -21,4 +21,4 @@ python optimize_hyperparameters_direct.py $dataset zero $encoding xgb $min_cases
 echo "finished hyperparameter optimization at $(date)"
 python extract_best_params.py $dataset
 echo "started experiments with optimal parameters direct regression at $(date)"
-python train_direct.py $dataset zero $encoding xgb $min_cases
+python train_direct.py $dataset zero combined xgb $min_cases

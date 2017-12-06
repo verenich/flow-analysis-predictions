@@ -1,6 +1,6 @@
 dataset,method,cls,nr_events,metric,score,nr_cases
-BPI2012O,zero_combined,xgb,2,mae,789451.26409,697
-BPI2012O,zero_combined,xgb,2,rmse,938847.088303,697
+BPI2012O,zero_combined,xgb,2,mae,789451.264401,697
+BPI2012O,zero_combined,xgb,2,rmse,938847.08847,697
 BPI2012O,zero_combined,xgb,3,mae,574380.95768,546
 BPI2012O,zero_combined,xgb,3,rmse,667994.33014,546
 BPI2012O,zero_combined,xgb,4,mae,206378.791486,352
