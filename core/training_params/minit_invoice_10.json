@@ -14,7 +14,7 @@
    "remtime2": {
       "zero_combined": {
          "xgb": {
-            "n_estimators": 89,
+            "n_estimators": 46,
             "learning_rate": 0.01860554789160753,
             "subsample": 0.7192798799326399,
             "max_depth": 3,

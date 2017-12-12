@@ -15,7 +15,7 @@ loadfonts()
 
 ## Event logs studied:
 
-```{r eval=FALSE, include=FALSE}
+```{r include=FALSE}
 logs = read.csv("../logs_summary.csv")
 DT::datatable(logs, filter = "top")
 ```
