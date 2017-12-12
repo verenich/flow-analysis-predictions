@@ -100,7 +100,7 @@ with open(outfile, 'w') as fout:
                         'fillna': fillna}
 
     for i in range(n_iter):
-        n_estimators = np.random.randint(50, 1000)
+        n_estimators = np.random.randint(40, 1000)
         learning_rate = np.random.uniform(0.01, 0.07)
         subsample = np.random.uniform(0.5, 1)
         max_depth = np.random.randint(3, 9)

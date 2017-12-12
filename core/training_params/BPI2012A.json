@@ -1,35 +1,25 @@
 {
    "remtime": {
-      "zero_laststate": {
+      "zero_combined": {
          "xgb": {
-            "n_estimators": 101,
-            "learning_rate": 0.024528837867020842,
-            "subsample": 0.6551534092619985,
-            "max_depth": 6,
-            "colsample_bytree": 0.7643972683566531,
-            "min_child_weight": 2
+            "n_estimators": 206,
+            "learning_rate": 0.010664337922337778,
+            "subsample": 0.9880985469943686,
+            "max_depth": 5,
+            "colsample_bytree": 0.8708411828805518,
+            "min_child_weight": 1
          }
       }
    },
    "remtime2": {
       "zero_combined": {
          "xgb": {
-            "n_estimators": 164,
-            "learning_rate": 0.029546709106899164,
-            "subsample": 0.5358665285502402,
+            "n_estimators": 114,
+            "learning_rate": 0.032607257619356664,
+            "subsample": 0.7683887282435975,
             "max_depth": 4,
-            "colsample_bytree": 0.6279599803005205,
+            "colsample_bytree": 0.8469542564678031,
             "min_child_weight": 1
-         }
-      },
-      "zero_laststate": {
-         "xgb": {
-            "n_estimators": 749,
-            "learning_rate": 0.011670705945939377,
-            "subsample": 0.751216929622116,
-            "max_depth": 3,
-            "colsample_bytree": 0.6903721080730236,
-            "min_child_weight": 2
          }
       }
    }

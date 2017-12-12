@@ -1,17 +1,17 @@
 {
    "remtime": {
-      "zero_laststate": {
+      "zero_combined": {
          "xgb": {
-            "min_child_weight": 2,
-            "learning_rate": 0.022930332046849685,
-            "colsample_bytree": 0.96508033458147,
-            "max_depth": 4,
-            "n_estimators": 141,
-            "subsample": 0.539991217030408
+            "n_estimators": 283,
+            "learning_rate": 0.02514417160015647,
+            "subsample": 0.8086056871281919,
+            "max_depth": 8,
+            "colsample_bytree": 0.5488983387264411,
+            "min_child_weight": 2
          }
       }
    },
-   "remtime2": {
+    "remtime2": {
       "zero_laststate": {
          "xgb": {
             "min_child_weight": 1,

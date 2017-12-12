@@ -1,7 +1,7 @@
 dataset,method,cls,nr_events,metric,score,nr_cases
-helpdesk,zero_combined,xgb,2,mae,549389.332311,606
-helpdesk,zero_combined,xgb,2,rmse,988577.226792,606
-helpdesk,zero_combined,xgb,3,mae,1287274.30148,133
-helpdesk,zero_combined,xgb,3,rmse,2393744.91074,133
-helpdesk,zero_combined,xgb,4,mae,305778.610857,4
-helpdesk,zero_combined,xgb,4,rmse,328353.608225,4
+helpdesk,zero_combined,xgb,2,mae,420876.63805,606
+helpdesk,zero_combined,xgb,2,rmse,710662.383155,606
+helpdesk,zero_combined,xgb,3,mae,552465.022666,133
+helpdesk,zero_combined,xgb,3,rmse,851077.669106,133
+helpdesk,zero_combined,xgb,4,mae,195026.928635,4
+helpdesk,zero_combined,xgb,4,rmse,203154.862853,4

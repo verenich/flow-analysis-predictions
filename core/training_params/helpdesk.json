@@ -2,21 +2,11 @@
    "remtime": {
       "zero_combined": {
          "xgb": {
-            "n_estimators": 647,
-            "learning_rate": 0.05297395122241733,
-            "subsample": 0.6102971198999232,
+            "n_estimators": 856,
+            "learning_rate": 0.03968982840977686,
+            "subsample": 0.8991378450106721,
             "max_depth": 5,
-            "colsample_bytree": 0.7402080615086732,
-            "min_child_weight": 2
-         }
-      },
-      "zero_laststate": {
-         "xgb": {
-            "n_estimators": 586,
-            "learning_rate": 0.0595969354362886,
-            "subsample": 0.9478048126267784,
-            "max_depth": 4,
-            "colsample_bytree": 0.8870304481815341,
+            "colsample_bytree": 0.933519820751686,
             "min_child_weight": 2
          }
       }
@@ -24,21 +14,11 @@
    "remtime2": {
       "zero_combined": {
          "xgb": {
-            "n_estimators": 52,
-            "learning_rate": 0.06482240579381977,
-            "subsample": 0.5643570502778402,
-            "max_depth": 4,
-            "colsample_bytree": 0.5225754655727359,
-            "min_child_weight": 2
-         }
-      },
-      "zero_laststate": {
-         "xgb": {
-            "n_estimators": 54,
-            "learning_rate": 0.02012219350954305,
-            "subsample": 0.8967494428322313,
-            "max_depth": 6,
-            "colsample_bytree": 0.872337792089473,
+            "n_estimators": 75,
+            "learning_rate": 0.012957772574018728,
+            "subsample": 0.9815854709560884,
+            "max_depth": 5,
+            "colsample_bytree": 0.4582444922580517,
             "min_child_weight": 1
          }
       }

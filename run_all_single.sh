@@ -4,7 +4,7 @@ do
     for DATASET_NAME in BPI2012A.csv BPI2012O.csv BPI2012W.csv BPI2012W_no_dup.csv CreditRequirement.csv helpdesk.csv hospital_billing_977.csv traffic_fines_139.csv minit_invoice_10.csv
     #for DATASET_NAME in bpic2017 traffic_fines
     do
-        for METHOD in FA FA_calib
+        for METHOD in FA direct
         do
             for OPTIM_TYPE in FA2
             do
