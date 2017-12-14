@@ -119,12 +119,14 @@ if((size1 - size2)/size2 > 0.01)  {
 dat$method3[dat$method3 == "3000000.csv"] = "mean"
 dat$method3[dat$method3 == "30.csv" & dat$method2 == "FA"] = "predictive"
 dat$method3[dat$method3 == "30.csv" & dat$method2 == "regression"] = "simple"
-dat$method3[dat$method3 == "30.csv" & dat$method2 == "isotonic_FA"] = "isotonic"
-dat$method3[dat$method3 == "30.csv" & dat$method2 == "sigmoid_FA"] = "sigmoid"
-dat$method3[dat$method3 == "3000.csv"] = "adaptive3000"
-dat$method3[dat$method3 == "30000.csv"] = "adaptive30000"
+# dat$method3[dat$method3 == "30.csv" & dat$method2 == "isotonic_FA"] = "isotonic"
+# dat$method3[dat$method3 == "30.csv" & dat$method2 == "sigmoid_FA"] = "sigmoid"
+dat$method3[dat$method3 == "5.csv"] = "adaptive"
+dat$method3[dat$method3 == "10.csv"] = "adaptive"
+dat$method3[dat$method3 == "20.csv"] = "adaptive"
+dat$method3[dat$method3 == "sqrt.csv"] = "adaptive"
 
-dat$method4 = paste(dat$method3, dat$method2, dat$method, sep = "_")
+dat$method4 = paste(dat$method3, dat$method2, sep = "_")
 ```
 
 
@@ -162,7 +164,7 @@ for (df in levels(dat$dataset)) {
   print(p)
 }
 ```
-## Interactive plots can be accessed [here](https://plot.ly/~verenich/79/)
+## Interactive plots can be accessed [here](https://plot.ly/~verenich/93/)
 ```{r include=FALSE}
 p = ggplot(dat, aes(x = nr_events, y = score, color = method4)) + geom_point() + geom_line() + 
   facet_wrap(~ dataset, ncol = 3, scales = "free") + ylab("MAE, days") + xlab("Prefix length")+
@@ -171,7 +173,7 @@ p = ggplot(dat, aes(x = nr_events, y = score, color = method4)) + geom_point() +
     theme(panel.grid.major = element_line(colour = 'lightgrey', size = 0.3))+
   theme(legend.background = element_rect(colour = 'white',size = 0.1, linetype='solid'))+
   theme(legend.title=element_blank())
-#api_create(p, "flow-analysis-MAE-100-0660", sharing = "public")
+api_create(p, "flow-analysis-MAE-all", sharing = "public")
 ```
 
 ```{r include=FALSE}
