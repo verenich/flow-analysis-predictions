@@ -182,7 +182,3 @@ print(p)
 dev.off()
 embed_fonts("MAE-all.pdf",outfile="MAE-all.pdf")
 ```
-## To-do:
-
-* [probability calibraion](http://scikit-learn.org/stable/auto_examples/calibration/plot_calibration.html) - may increase prediction accuracy of FA, due to branching probabilities potentially being more reliable.
-* repeat experiments for Disco and minit datasets

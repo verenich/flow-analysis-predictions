@@ -77,7 +77,7 @@ with open(outfile, 'w') as fout:
         data = data.groupby(dataset_manager.case_id_col, as_index=False).apply(dataset_manager.add_remtime)
 
     # split data into training and test sets
-    train, test = dataset_manager.split_data(data, train_ratio=0.660)
+    train, test = dataset_manager.split_data(data, train_ratio=0.8)
     # train = train.sort_values(dataset_manager.timestamp_col, ascending=True, kind='mergesort')
 
     # consider prefix lengths until 90th percentile of case length
