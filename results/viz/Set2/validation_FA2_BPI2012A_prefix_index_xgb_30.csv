@@ -1,0 +1,13 @@
+dataset,method,cls,nr_events,metric,score,nr_cases
+BPI2012A,prefix_index,xgb,2,mae,564799.441887,2401
+BPI2012A,prefix_index,xgb,2,rmse,617526.127012,2401
+BPI2012A,prefix_index,xgb,3,mae,785895.928724,1092
+BPI2012A,prefix_index,xgb,3,rmse,882948.442075,1092
+BPI2012A,prefix_index,xgb,4,mae,787694.611664,707
+BPI2012A,prefix_index,xgb,4,rmse,920447.618592,707
+BPI2012A,prefix_index,xgb,5,mae,500307.238309,443
+BPI2012A,prefix_index,xgb,5,rmse,587461.138604,443
+BPI2012A,prefix_index,xgb,6,mae,2603.54118021,212
+BPI2012A,prefix_index,xgb,6,rmse,6383.41170734,212
+BPI2012A,prefix_index,xgb,7,mae,256.238624073,212
+BPI2012A,prefix_index,xgb,7,rmse,960.43939484,212

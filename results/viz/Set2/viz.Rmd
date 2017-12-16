@@ -40,7 +40,7 @@ DT::datatable(logs, filter = "top")
 dat = c()
 filenames <- list.files()[grep(paste("^validation_FA2_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
 for (filename in filenames) {
-  if(grepl("combined", filename)) {
+  if(grepl("combined", filename) | grepl("index", filename) | grepl("index", filename)) {
   this = read.csv(filename, sep=",", header = TRUE)
   this = this[this$metric == "mae",]
   this$nr_cases = this$nr_cases/sum(this$nr_cases)
@@ -57,7 +57,7 @@ print(nrow(dat))
 ```{r eval=FALSE, include=FALSE}
 filenames2 <- list.files()[grep(paste("^validation_isotonic_FA2_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
 for (filename in filenames2) {
-  if(grepl("combined", filename)) {
+  if(grepl("combined", filename) | grepl("index", filename)) {
   this = read.csv(filename, sep=",", header = TRUE)
   this = this[this$metric == "mae",]
   this$nr_cases = this$nr_cases/sum(this$nr_cases)
@@ -74,7 +74,7 @@ print(nrow(dat))
 ```{r eval=FALSE, include=FALSE}
 filenames3 <- list.files()[grep(paste("^validation_sigmoid_FA2_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
 for (filename in filenames3) {
-  if(grepl("combined", filename)) {
+  if(grepl("combined", filename) | grepl("index", filename)) {
   this = read.csv(filename, sep=",", header = TRUE)
   this = this[this$metric == "mae",]
   this$nr_cases = this$nr_cases/sum(this$nr_cases)
@@ -91,7 +91,7 @@ print(nrow(dat))
 ```{r include=FALSE}
 filenames4 <- list.files()[grep(paste("^validation_direct_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
 for (filename in filenames4) {
-  if(grepl("combined", filename)) {
+  if(grepl("combined", filename) | grepl("index", filename)) {
   this = read.csv(filename, sep=",", header = TRUE)
   this = this[this$metric == "mae",]
   this$nr_cases = this$nr_cases/sum(this$nr_cases)
@@ -126,7 +126,7 @@ dat$method3[dat$method3 == "10.csv"] = "adaptive"
 dat$method3[dat$method3 == "20.csv"] = "adaptive"
 dat$method3[dat$method3 == "sqrt.csv"] = "adaptive"
 
-dat$method4 = paste(dat$method3, dat$method2, sep = "_")
+dat$method4 = paste(dat$method3, dat$method2, dat$method, sep = "_")
 ```
 
 

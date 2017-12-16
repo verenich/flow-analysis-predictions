@@ -1,0 +1,13 @@
+dataset,method,cls,nr_events,metric,score,nr_cases
+CreditRequirement,prefix_index,xgb,2,mae,13138.7119622,2007
+CreditRequirement,prefix_index,xgb,2,rmse,29158.956171,2007
+CreditRequirement,prefix_index,xgb,3,mae,9451.96478333,2007
+CreditRequirement,prefix_index,xgb,3,rmse,22633.2211498,2007
+CreditRequirement,prefix_index,xgb,4,mae,8442.57813197,2007
+CreditRequirement,prefix_index,xgb,4,rmse,21530.6533983,2007
+CreditRequirement,prefix_index,xgb,5,mae,7873.53987615,2007
+CreditRequirement,prefix_index,xgb,5,rmse,21043.746523,2007
+CreditRequirement,prefix_index,xgb,6,mae,5672.02684823,2007
+CreditRequirement,prefix_index,xgb,6,rmse,18008.198288,2007
+CreditRequirement,prefix_index,xgb,7,mae,909.346010616,2007
+CreditRequirement,prefix_index,xgb,7,rmse,8075.27378321,2007

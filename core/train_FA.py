@@ -3,6 +3,7 @@ import pickle
 from sys import argv
 
 import numpy as np
+from numpy import array
 import pandas as pd
 
 from sklearn.metrics import mean_absolute_error, mean_squared_error
@@ -69,7 +70,7 @@ with open(outfile, 'w') as fout:
     #     dtypes[dataset_manager.label_col] = "str"  # if classification, preserve and do not interpret dtype of label
 
     data = pd.read_csv(os.path.join(home_dir, logs_dir, train_file), sep=";", dtype=dtypes)
-    #data = data.head(30000)
+    #data = data.tail(30000)
     data[dataset_manager.timestamp_col] = pd.to_datetime(data[dataset_manager.timestamp_col])
 
     # split data into training and test sets
@@ -258,7 +259,7 @@ with open(outfile, 'w') as fout:
                     print("Bucket is not in pipeline, defaulting to averages")
                     avg_target_value = [np.mean(target_df_[label_col])] if mode == "regr" else [
                         dataset_manager.get_class_ratio(target_df_, label_col=label_col)]
-                    preds_bucket = avg_target_value * len(relevant_cases_bucket)
+                    preds_bucket = array(avg_target_value * len(relevant_cases_bucket))
 
                 else:
                     # make actual predictions
@@ -297,6 +298,7 @@ with open(outfile, 'w') as fout:
                 result[label_col] = predicted
 
             elif mode == "class":
+                preds = np.rint(preds)
                 for column in preds.T:
                     predicted = pd.Series(column)
                     predicted.index = case_ids

@@ -3,6 +3,7 @@ import pickle
 from sys import argv
 
 import numpy as np
+from numpy import array
 import pandas as pd
 
 from sklearn.metrics import mean_absolute_error, mean_squared_error
@@ -203,7 +204,7 @@ with open(outfile, 'w') as fout:
                 # use mean value (in training set) as prediction
                 print("Bucket is not in pipeline, defaulting to averages")
                 avg_target_value = [np.mean(train[label_col])]
-                preds_bucket = avg_target_value * len(relevant_cases_bucket)
+                preds_bucket = array(avg_target_value * len(relevant_cases_bucket))
 
             else:
                 # make actual predictions
