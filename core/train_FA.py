@@ -298,7 +298,7 @@ with open(outfile, 'w') as fout:
                 result[label_col] = predicted
 
             elif mode == "class":
-                preds = np.rint(preds)
+                #preds = np.rint(preds)
                 for column in preds.T:
                     predicted = pd.Series(column)
                     predicted.index = case_ids
