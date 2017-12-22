@@ -1,0 +1,5 @@
+dataset,method,cls,nr_events,metric,score,nr_cases
+BPI2012A,Rogge-Solti,SPN,2,mae,729229.256243232,2401
+BPI2012A,Rogge-Solti,SPN,3,mae,599116.468908425,1092
+BPI2012A,Rogge-Solti,SPN,4,mae,536056.625932108,707
+BPI2012A,Rogge-Solti,SPN,5,mae,334939.044471783,443

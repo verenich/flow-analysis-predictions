@@ -1,0 +1,6 @@
+dataset,method,cls,nr_events,metric,score,nr_cases
+hospital_billing_977,Rogge-Solti,SPN,2,mae,8069523.30792521,11846
+hospital_billing_977,Rogge-Solti,SPN,3,mae,7470323.20475789,11528
+hospital_billing_977,Rogge-Solti,SPN,4,mae,3322491.69518112,11528
+hospital_billing_977,Rogge-Solti,SPN,5,mae,3088452.87214901,7100
+hospital_billing_977,Rogge-Solti,SPN,6,mae,3125477.71970471,403

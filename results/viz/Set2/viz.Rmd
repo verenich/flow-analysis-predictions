@@ -54,40 +54,6 @@ for (filename in filenames) {
 print(nrow(dat))
 ```
 
-```{r eval=FALSE, include=FALSE}
-filenames2 <- list.files()[grep(paste("^validation_isotonic_FA2_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
-for (filename in filenames2) {
-  if(grepl("combined", filename) | grepl("index", filename)) {
-  this = read.csv(filename, sep=",", header = TRUE)
-  this = this[this$metric == "mae",]
-  this$nr_cases = this$nr_cases/sum(this$nr_cases)
-  this$score_weighted = this$score * this$nr_cases
-  this$method2 = "isotonic_FA"
-  this$method3 = strsplit(filename,"_")[[1]][length(strsplit(filename,"_")[[1]])]
-  this$filename = filename
-  dat = rbind(dat, this)
-  }
-}
-print(nrow(dat))
-```
-
-```{r eval=FALSE, include=FALSE}
-filenames3 <- list.files()[grep(paste("^validation_sigmoid_FA2_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
-for (filename in filenames3) {
-  if(grepl("combined", filename) | grepl("index", filename)) {
-  this = read.csv(filename, sep=",", header = TRUE)
-  this = this[this$metric == "mae",]
-  this$nr_cases = this$nr_cases/sum(this$nr_cases)
-  this$score_weighted = this$score * this$nr_cases
-  this$method2 = "sigmoid_FA"
-  this$method3 = strsplit(filename,"_")[[1]][length(strsplit(filename,"_")[[1]])]
-  this$filename = filename
-  dat = rbind(dat, this)
-  }
-}
-print(nrow(dat))
-```
-
 ```{r include=FALSE}
 filenames4 <- list.files()[grep(paste("^validation_direct_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
 for (filename in filenames4) {
@@ -104,6 +70,36 @@ for (filename in filenames4) {
 }
 print(nrow(dat))
 ```
+
+```{r}
+filenames4 <- list.files()[grep(paste("^validation_Aalst_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
+for (filename in filenames4) {
+  this = read.csv(filename, sep=",", header = TRUE)
+  #this = this[this$metric == "mae",]
+  this$nr_cases = (this$nr_cases/sum(this$nr_cases))*3
+  this$score_weighted = this$score * this$nr_cases
+  this$method2 = this$cls
+  this$method3 = ""
+  this$filename = filename
+  dat = rbind(dat, this)
+}
+print(nrow(dat))
+```
+```{r}
+filenames4 <- list.files()[grep(paste("^validation_SPN_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
+for (filename in filenames4) {
+  this = read.csv(filename, sep=",", header = TRUE)
+  #this = this[this$metric == "mae",]
+  this$nr_cases = this$nr_cases/sum(this$nr_cases)
+  this$score_weighted = this$score * this$nr_cases
+  this$method2 = this$cls
+  this$method3 = ""
+  this$filename = filename
+  dat = rbind(dat, this)
+}
+print(nrow(dat))
+```
+
 
 ```{r eval=FALSE, include=FALSE}
 size1 = nrow(dat)

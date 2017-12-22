@@ -1,0 +1,4 @@
+dataset,method,cls,nr_events,metric,score,nr_cases
+helpdesk,Rogge-Solti,SPN,2,mae,519970.026100486,617
+helpdesk,Rogge-Solti,SPN,3,mae,532817.323158824,170
+helpdesk,Rogge-Solti,SPN,4,mae,391578.698,47

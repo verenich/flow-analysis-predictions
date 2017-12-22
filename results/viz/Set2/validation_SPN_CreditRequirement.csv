@@ -1,0 +1,7 @@
+dataset,method,cls,nr_events,metric,score,nr_cases
+CreditRequirement,Rogge-Solti,SPN,2,mae,45854.3216721475,2007
+CreditRequirement,Rogge-Solti,SPN,3,mae,46549.0017264574,2007
+CreditRequirement,Rogge-Solti,SPN,4,mae,43177.2271001495,2007
+CreditRequirement,Rogge-Solti,SPN,5,mae,29290.8330169407,2007
+CreditRequirement,Rogge-Solti,SPN,6,mae,17569.7982571001,2007
+CreditRequirement,Rogge-Solti,SPN,7,mae,3871.84154459392,2007

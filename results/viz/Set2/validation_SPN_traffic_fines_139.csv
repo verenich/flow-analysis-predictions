@@ -1,0 +1,8 @@
+dataset,method,cls,nr_events,metric,score,nr_cases
+traffic_fines_139,Rogge-Solti,SPN,2,mae,17344513.7411736,16258
+traffic_fines_139,Rogge-Solti,SPN,3,mae,14917617.8580418,14779
+traffic_fines_139,Rogge-Solti,SPN,4,mae,14481507.8805398,14599
+traffic_fines_139,Rogge-Solti,SPN,5,mae,29218828.2522124,2712
+traffic_fines_139,Rogge-Solti,SPN,6,mae,25587054.3157895,19
+traffic_fines_139,Rogge-Solti,SPN,7,mae,29700611.3684211,19
+traffic_fines_139,Rogge-Solti,SPN,8,mae,35008559.368421,19

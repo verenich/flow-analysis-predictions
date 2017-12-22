@@ -1,0 +1,10 @@
+dataset,method,cls,nr_events,metric,score,nr_cases
+BPI2012W_no_dup,Rogge-Solti,SPN,2,mae,556212.192154667,1125
+BPI2012W_no_dup,Rogge-Solti,SPN,3,mae,672121.813104129,557
+BPI2012W_no_dup,Rogge-Solti,SPN,4,mae,655350.56291411,326
+BPI2012W_no_dup,Rogge-Solti,SPN,5,mae,619182.771508475,177
+BPI2012W_no_dup,Rogge-Solti,SPN,6,mae,607581.112509615,104
+BPI2012W_no_dup,Rogge-Solti,SPN,7,mae,656157.498981481,54
+BPI2012W_no_dup,Rogge-Solti,SPN,8,mae,618630.17992,25
+BPI2012W_no_dup,Rogge-Solti,SPN,9,mae,724447.3305625,16
+BPI2012W_no_dup,Rogge-Solti,SPN,10,mae,480758.977285714,7
