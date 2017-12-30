@@ -316,6 +316,7 @@ with open(outfile, 'w') as fout:
         testformula.index = testformula[dataset_manager.case_id_col]
 
         result = pd.merge(result, testformula, left_index=True, right_index=True)
+        # result.to_csv("res_hospital_billing_977_%s_pred.csv", index=False)
         result["predicted"] = -1
 
         terms = {}  # dictionary to store formula terms

@@ -1,7 +1,0 @@
-dataset,method,cls,nr_events,metric,score,nr_cases
-BPI2012O,zero_agg,xgb,2,mae,680094.104371,1185
-BPI2012O,zero_agg,xgb,2,rmse,826412.993461,1185
-BPI2012O,zero_agg,xgb,3,mae,569463.816823,1034
-BPI2012O,zero_agg,xgb,3,rmse,696249.218948,1034
-BPI2012O,zero_agg,xgb,4,mae,216443.645833,652
-BPI2012O,zero_agg,xgb,4,rmse,304383.049742,652

@@ -1,10 +1,4 @@
 dataset,method,cls,nr_events,metric,score,nr_cases
-helpdesk,Aalst,set,2,mae,529433.824992804,606
-helpdesk,Aalst,bag,2,mae,526943.067921592,606
-helpdesk,Aalst,set,3,mae,484979.83376294,133
-helpdesk,Aalst,bag,3,mae,484673.954607062,133
-helpdesk,Aalst,set,4,mae,576962.286514727,4
-helpdesk,Aalst,bag,4,mae,130592.653582783,4
-helpdesk,Aalst,seq,2,mae,526943.06792159,606
-helpdesk,Aalst,seq,3,mae,484673.954607062,133
-helpdesk,Aalst,seq,4,mae,130592.653582783,4
+helpdesk,Aalst,best,2,mae,526943.06792159,606
+helpdesk,Aalst,best,3,mae,484673.954607062,133
+helpdesk,Aalst,best,4,mae,130592.653582783,4

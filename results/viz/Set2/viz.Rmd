@@ -6,6 +6,7 @@ output: html_notebook
 ```{r include=FALSE}
 library(plotly)
 library(ggplot2)
+library(plyr)
 library(extrafont)
 library(gridExtra)
 font_install("fontcm")
@@ -40,8 +41,9 @@ DT::datatable(logs, filter = "top")
 dat = c()
 filenames <- list.files()[grep(paste("^validation_FA2_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
 for (filename in filenames) {
-  if(grepl("combined", filename) | grepl("index", filename) | grepl("index", filename)) {
+  if(grepl("combined", filename) | grepl("index", filename)) {
   this = read.csv(filename, sep=",", header = TRUE)
+  this = this[this$nr_events < 11,]
   this = this[this$metric == "mae",]
   this$nr_cases = this$nr_cases/sum(this$nr_cases)
   this$score_weighted = this$score * this$nr_cases
@@ -59,6 +61,7 @@ filenames4 <- list.files()[grep(paste("^validation_direct_(?=.*\\.csv)", sep='')
 for (filename in filenames4) {
   if(grepl("combined", filename) | grepl("index", filename)) {
   this = read.csv(filename, sep=",", header = TRUE)
+  this = this[this$nr_events < 11,]
   this = this[this$metric == "mae",]
   this$nr_cases = this$nr_cases/sum(this$nr_cases)
   this$score_weighted = this$score * this$nr_cases
@@ -75,8 +78,9 @@ print(nrow(dat))
 filenames4 <- list.files()[grep(paste("^validation_Aalst_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
 for (filename in filenames4) {
   this = read.csv(filename, sep=",", header = TRUE)
+  this = this[this$nr_events < 11,]
   #this = this[this$metric == "mae",]
-  this$nr_cases = (this$nr_cases/sum(this$nr_cases))*3
+  this$nr_cases = (this$nr_cases/sum(this$nr_cases))
   this$score_weighted = this$score * this$nr_cases
   this$method2 = this$cls
   this$method3 = ""
@@ -89,6 +93,7 @@ print(nrow(dat))
 filenames4 <- list.files()[grep(paste("^validation_SPN_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
 for (filename in filenames4) {
   this = read.csv(filename, sep=",", header = TRUE)
+  this = this[this$nr_events < 11,]
   #this = this[this$metric == "mae",]
   this$nr_cases = this$nr_cases/sum(this$nr_cases)
   this$score_weighted = this$score * this$nr_cases
@@ -145,8 +150,37 @@ agg_MAE = agg_MAE[with(agg_MAE, order(dataset, Avg_weighted_MAE_days, method = "
 DT::datatable(agg_MAE, filter = "top")
 ```
 
+```{r}
+tmp = ddply(dat, .(dataset,method4), summarize, std=sd(score))
+tmp$std = round(tmp$std,3)
+names(tmp)[2]="method"
+agg_MAE = merge(agg_MAE, tmp)
+agg_MAE$Avg_unweighted_MAE_days=NULL
+agg_MAE = agg_MAE[with(agg_MAE, order(dataset, Avg_weighted_MAE_days, method = "radix")), ]
+DT::datatable(agg_MAE, filter = "top")
+```
+
 ## Plots MAE vs prefix size
 ```{r}
+dat$method4[dat$method4=="_best_Aalst"] = "TS (best)"
+dat$method4[dat$method4=="adaptive_FA_zero_combined"] = "adaptive FA"
+dat$method4[dat$method4=="mean_FA_zero_combined"] = "mean FA"
+dat$method4[dat$method4=="predictive_FA_prefix_index"] = "predictive FA (multiple)"
+dat$method4[dat$method4=="predictive_FA_zero_combined"] = "predictive FA (single)"
+dat$method4[dat$method4=="simple_regression_prefix_index"] = "black box (multiple)"
+dat$method4[dat$method4=="simple_regression_zero_combined"] = "black box (single)"
+dat$method4[dat$method4=="_SPN_Rogge-Solti"] = "stochastic Petri net"
+
+levels(dat$dataset)[1] = "BPIC'12 A"
+levels(dat$dataset)[2] = "BPIC'12 O"
+levels(dat$dataset)[3] = "BPIC'12 W_n|1|"
+levels(dat$dataset)[4] = "BPIC'12 W"
+levels(dat$dataset)[5] = "CR"
+levels(dat$dataset)[6] = "Helpdesk"
+levels(dat$dataset)[7] = "Hospital"
+levels(dat$dataset)[8] = "Invoice"
+levels(dat$dataset)[9] = "RTFMP"
+
 for (df in levels(dat$dataset)) {
   p = ggplot(dat[dat$dataset == df,], aes(x = nr_events, y = score, color = method4)) + geom_point() + geom_line() + 
     #facet_wrap(~ dataset, ncol = 3, scales = "free") + 
@@ -162,19 +196,117 @@ for (df in levels(dat$dataset)) {
 ```
 ## Interactive plots can be accessed [here](https://plot.ly/~verenich/93/)
 ```{r include=FALSE}
-p = ggplot(dat, aes(x = nr_events, y = score, color = method4)) + geom_point() + geom_line() + 
+cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+p = ggplot(dat, aes(x = nr_events, y = score, color = method4)) + geom_point(size=0.5) + geom_line(size=0.4) + 
   facet_wrap(~ dataset, ncol = 3, scales = "free") + ylab("MAE, days") + xlab("Prefix length")+
   theme(legend.position="top")+
     theme(panel.background = element_rect(fill = 'white', colour = 'black',size=0.5)) + 
     theme(panel.grid.major = element_line(colour = 'lightgrey', size = 0.3))+
   theme(legend.background = element_rect(colour = 'white',size = 0.1, linetype='solid'))+
-  theme(legend.title=element_blank())
-api_create(p, "flow-analysis-MAE-all", sharing = "public")
+  theme(legend.title=element_blank()) +
+  theme(text=element_text(size=10))+
+  theme(axis.text=element_text(colour="black"))+
+  #scale_color_manual(values=c("black","red","blue","darkgreen","orange","darkblue","violet","gray"))+
+  scale_colour_manual(values=cbPalette)
+
+#api_create(p, "flow-analysis-MAE-all", sharing = "public")
 ```
 
 ```{r include=FALSE}
-pdf(file="MAE-all.pdf",family="CM Roman",width=12,height=10)
+pdf(file="MAE-all.pdf",family="CM Roman",width=6,height=6)
 print(p)
 dev.off()
 embed_fonts("MAE-all.pdf",outfile="MAE-all.pdf")
 ```
+
+### for paper only ###
+
+```{r}
+agg_MAE$method[agg_MAE$method=="_best_Aalst"] = "TS (best)"
+agg_MAE$method[agg_MAE$method=="adaptive_FA_zero_combined"] = "adaptive FA"
+agg_MAE$method[agg_MAE$method=="mean_FA_zero_combined"] = "mean FA"
+agg_MAE$method[agg_MAE$method=="predictive_FA_prefix_index"] = "predictive FA (multiple)"
+agg_MAE$method[agg_MAE$method=="predictive_FA_zero_combined"] = "predictive FA (single)"
+agg_MAE$method[agg_MAE$method=="simple_regression_prefix_index"] = "black box (multiple)"
+agg_MAE$method[agg_MAE$method=="simple_regression_zero_combined"] = "black box (single)"
+agg_MAE$method[agg_MAE$method=="_SPN_Rogge-Solti"] = "stochastic Petri net"
+dat = data.frame()
+
+for (dset in levels(agg_MAE$dataset)) {
+  df = agg_MAE[agg_MAE$dataset==dset,]
+  df$Order = rank(df$Avg_weighted_MAE_days,ties.method = "min")
+  dat = rbind(dat, df)
+}
+
+dat_ = ddply(dat, .(method), summarize, Mean=mean(Order))
+foo = ddply(dat, .(method), summarize, std=sd(Order))
+dat_ = merge(dat_,foo)
+dat_ = dat_[order(dat_$Mean),]
+```
+
+```{r}
+pdf(file="mean-ranking.pdf",family="CM Roman",width=4,height=2)
+p=ggplot(dat_, aes(x=reorder(method, -Mean), y=Mean, fill=method, group=method)) + 
+  geom_bar(stat="identity") + theme(text=element_text(size=24))+
+  geom_errorbar(aes(ymin=Mean-std, ymax=Mean+std),width=.2) + 
+  theme_bw() + coord_flip() + theme(legend.position="none") + ylab("mean ranking")+
+  theme(axis.title.y=element_blank(),axis.text=element_text(color="black"),axis.ticks.y=element_blank())+
+  scale_y_continuous(expand = c(0,0), limits=c(0,9),breaks = seq(1,7,2), labels =as.character(seq(1,7,2)))+
+  scale_fill_manual(values=cbPalette)
+print(p)
+dev.off()
+embed_fonts("mean-ranking.pdf",outfile="mean-ranking.pdf")
+```
+```{r}
+dat$case_duration = 0
+dat$case_duration[dat$dataset=="BPI2012A"] = 7.5
+dat$case_duration[dat$dataset=="BPI2012O"] = 15.1
+dat$case_duration[dat$dataset=="BPI2012W"] = 11.4
+dat$case_duration[dat$dataset=="BPI2012W_no_dup"] = 11.4
+dat$case_duration[dat$dataset=="CreditRequirement"] = 0.95
+dat$case_duration[dat$dataset=="helpdesk"] = 7.3
+dat$case_duration[dat$dataset=="minit_invoice_10"] = 2.225
+dat$case_duration[dat$dataset=="traffic_fines_139"] = 582
+dat$case_duration[dat$dataset=="hospital_billing_977"] = 165.2
+
+dat$Avg_weighted_MAE_days = dat$Avg_weighted_MAE_days / dat$case_duration
+dat$std = dat$std / dat$case_duration
+dat$Order = NULL
+```
+
+
+```{r}
+dat_ = ddply(dat, .(method), summarize, Mean=mean(Avg_weighted_MAE_days))
+foo = ddply(dat, .(method), summarize, std=sd(Avg_weighted_MAE_days))
+dat_ = merge(dat_,foo)
+pdf(file="mean-ranking2.pdf",family="CM Roman",width=4,height=2)
+p=ggplot(dat_, aes(x=reorder(method, -Mean), y=Mean, fill=method, group=method)) + 
+  geom_bar(stat="identity") + theme(text=element_text(size=24))+
+  geom_errorbar(aes(ymin=Mean-std, ymax=Mean+std),width=.2) + 
+  theme_bw() + coord_flip() + theme(legend.position="none") + ylab("Average normalized MAE")+
+  theme(axis.title.y=element_blank(),axis.text=element_text(color="black"),axis.ticks.y=element_blank())+
+  scale_y_continuous(expand = c(0,0), limits=c(0,0.9), breaks = seq(0,0.8,0.2), labels =as.character(seq(0,0.8,0.2)))+
+  scale_fill_manual(values=cbPalette)
+print(p)
+dev.off()
+embed_fonts("mean-ranking2.pdf",outfile="mean-ranking2.pdf")
+```
+```{r}
+dat_ = ddply(dat, .(method), summarize, Mean=mean(std))
+foo = ddply(dat, .(method), summarize, Std=sd(std))
+dat_ = merge(dat_,foo)
+pdf(file="mean-ranking3.pdf",family="CM Roman",width=4,height=2)
+p=ggplot(dat_, aes(x=reorder(method, -Mean), y=Mean, fill=method, group=method)) + 
+  geom_bar(stat="identity") + theme(text=element_text(size=24))+
+  geom_errorbar(aes(ymin=Mean-Std, ymax=Mean+Std),width=.2) + 
+  theme_bw() + coord_flip() + theme(legend.position="none") + ylab("Average normalized standard deviation")+
+  theme(axis.title.y=element_blank(),axis.text=element_text(color="black"),axis.ticks.y=element_blank())+
+  scale_y_continuous(expand = c(0,0), limits=c(-0.02,0.45), breaks = seq(0,0.4,0.1), labels =as.character(seq(0,0.4,0.1)))+
+  scale_fill_manual(values=cbPalette)
+print(p)
+dev.off()
+embed_fonts("mean-ranking3.pdf",outfile="mean-ranking3.pdf")
+
+```
+

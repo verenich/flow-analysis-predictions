@@ -1,2 +1,0 @@
-xgboost - 100 trees (for all datasets)
-train ration = 0.660
