@@ -30,11 +30,14 @@ DT::datatable(logs, filter = "top")
 
 ## Surveyed techniques:
 
-* predictive flow analysis (FA)
-* adaptive FA (based on a variable threshold e.g. 30K samples in the training set )
+* predictive flow analysis (FA) - single and multiple model options (zero bucketing and prefix-length bucketing, respectively)
+* adaptive FA (based on a variable threshold e.g. min N^2 samples in the training set, where N is the number of features )
 * mean FA - each cycle time and branching probability is derived based on historical averages
+
+## Baselines
 * simple regression - remaining time is predicted as a single value (comparable to [Massimiliano de Leoni's approach](http://www.sciencedirect.com/science/article/pii/S0306437915001313))
-* [Wil](https://www.researchgate.net/publication/220503961_Time_prediction_based_on_process_mining) and [Andreas Rogge-Solti](https://link.springer.com/chapter/10.1007/978-3-642-45005-1_27) will be added later as additional baselines. LSTM should probably also be added
+* [Wil](https://www.researchgate.net/publication/220503961_Time_prediction_based_on_process_mining)
+* [Andreas Rogge-Solti](https://link.springer.com/chapter/10.1007/978-3-642-45005-1_27).
 
 
 ```{r include=FALSE}
@@ -57,8 +60,8 @@ print(nrow(dat))
 ```
 
 ```{r include=FALSE}
-filenames4 <- list.files()[grep(paste("^validation_direct_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
-for (filename in filenames4) {
+filenames <- list.files()[grep(paste("^validation_direct_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
+for (filename in filenames) {
   if(grepl("combined", filename) | grepl("index", filename)) {
   this = read.csv(filename, sep=",", header = TRUE)
   this = this[this$nr_events < 11,]
@@ -75,8 +78,8 @@ print(nrow(dat))
 ```
 
 ```{r}
-filenames4 <- list.files()[grep(paste("^validation_Aalst_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
-for (filename in filenames4) {
+filenames <- list.files()[grep(paste("^validation_Aalst_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
+for (filename in filenames) {
   this = read.csv(filename, sep=",", header = TRUE)
   this = this[this$nr_events < 11,]
   #this = this[this$metric == "mae",]
@@ -87,11 +90,10 @@ for (filename in filenames4) {
   this$filename = filename
   dat = rbind(dat, this)
 }
-print(nrow(dat))
 ```
 ```{r}
-filenames4 <- list.files()[grep(paste("^validation_SPN_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
-for (filename in filenames4) {
+filenames <- list.files()[grep(paste("^validation_SPN_(?=.*\\.csv)", sep=''), list.files(), perl=TRUE)]
+for (filename in filenames) {
   this = read.csv(filename, sep=",", header = TRUE)
   this = this[this$nr_events < 11,]
   #this = this[this$metric == "mae",]
@@ -102,7 +104,6 @@ for (filename in filenames4) {
   this$filename = filename
   dat = rbind(dat, this)
 }
-print(nrow(dat))
 ```
 
 
@@ -127,7 +128,7 @@ dat$method3[dat$method3 == "10.csv"] = "adaptive"
 dat$method3[dat$method3 == "20.csv"] = "adaptive"
 dat$method3[dat$method3 == "sqrt.csv"] = "adaptive"
 
-dat$method4 = paste(dat$method3, dat$method2, dat$method, sep = "_")
+dat$method = paste(dat$method3, dat$method2, dat$method, sep = "_")
 ```
 
 
@@ -138,8 +139,8 @@ dat$score_weighted = dat$score_weighted / (3600*24)
 
 ## Average MAE across all prefix lengths for all datasets and methods:
 ```{r}
-agg_MAE_unw = as.data.frame(aggregate(dat$score,by=list(dataset=dat$dataset, method=dat$method4), mean))
-agg_MAE_w = as.data.frame(aggregate(dat$score_weighted,by=list(dataset=dat$dataset, method=dat$method4), sum))
+agg_MAE_unw = as.data.frame(aggregate(dat$score,by=list(dataset=dat$dataset, method=dat$method), mean))
+agg_MAE_w = as.data.frame(aggregate(dat$score_weighted,by=list(dataset=dat$dataset, method=dat$method), sum))
 agg_MAE_unw[,3] = round(agg_MAE_unw[,3], 3)
 agg_MAE_w[,3] = round(agg_MAE_w[,3], 3)
 colnames(agg_MAE_unw)[3] = "Avg_unweighted_MAE_days"
@@ -151,9 +152,8 @@ DT::datatable(agg_MAE, filter = "top")
 ```
 
 ```{r}
-tmp = ddply(dat, .(dataset,method4), summarize, std=sd(score))
+tmp = ddply(dat, .(dataset,method), summarize, std=sd(score))
 tmp$std = round(tmp$std,3)
-names(tmp)[2]="method"
 agg_MAE = merge(agg_MAE, tmp)
 agg_MAE$Avg_unweighted_MAE_days=NULL
 agg_MAE = agg_MAE[with(agg_MAE, order(dataset, Avg_weighted_MAE_days, method = "radix")), ]
@@ -162,14 +162,14 @@ DT::datatable(agg_MAE, filter = "top")
 
 ## Plots MAE vs prefix size
 ```{r}
-dat$method4[dat$method4=="_best_Aalst"] = "TS (best)"
-dat$method4[dat$method4=="adaptive_FA_zero_combined"] = "adaptive FA"
-dat$method4[dat$method4=="mean_FA_zero_combined"] = "mean FA"
-dat$method4[dat$method4=="predictive_FA_prefix_index"] = "predictive FA (multiple)"
-dat$method4[dat$method4=="predictive_FA_zero_combined"] = "predictive FA (single)"
-dat$method4[dat$method4=="simple_regression_prefix_index"] = "black box (multiple)"
-dat$method4[dat$method4=="simple_regression_zero_combined"] = "black box (single)"
-dat$method4[dat$method4=="_SPN_Rogge-Solti"] = "stochastic Petri net"
+dat$method[dat$method=="_best_Aalst"] = "TS (best)"
+dat$method[dat$method=="adaptive_FA_zero_combined"] = "adaptive FA"
+dat$method[dat$method=="mean_FA_zero_combined"] = "mean FA"
+dat$method[dat$method=="predictive_FA_prefix_index"] = "predictive FA (multiple)"
+dat$method[dat$method=="predictive_FA_zero_combined"] = "predictive FA (single)"
+dat$method[dat$method=="simple_regression_prefix_index"] = "black box (multiple)"
+dat$method[dat$method=="simple_regression_zero_combined"] = "black box (single)"
+dat$method[dat$method=="_SPN_Rogge-Solti"] = "stochastic Petri net"
 
 levels(dat$dataset)[1] = "BPIC'12 A"
 levels(dat$dataset)[2] = "BPIC'12 O"
@@ -182,7 +182,7 @@ levels(dat$dataset)[8] = "Invoice"
 levels(dat$dataset)[9] = "RTFMP"
 
 for (df in levels(dat$dataset)) {
-  p = ggplot(dat[dat$dataset == df,], aes(x = nr_events, y = score, color = method4)) + geom_point() + geom_line() + 
+  p = ggplot(dat[dat$dataset == df,], aes(x = nr_events, y = score, color = method)) + geom_point() + geom_line() + 
     #facet_wrap(~ dataset, ncol = 3, scales = "free") + 
     ylab("MAE, days") + xlab("Prefix length")+
     ggtitle(df)
@@ -191,14 +191,15 @@ for (df in levels(dat$dataset)) {
     theme(panel.grid.major = element_line(colour = 'lightgrey', size = 0.3))+
   theme(legend.background = element_rect(colour = 'white',size = 0.1, linetype='solid'))+
   theme(legend.title=element_blank())
-  print(p)
+  #print(p)
 }
 ```
+
 ## Interactive plots can be accessed [here](https://plot.ly/~verenich/93/)
 ```{r include=FALSE}
 cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
-p = ggplot(dat, aes(x = nr_events, y = score, color = method4)) + geom_point(size=0.5) + geom_line(size=0.4) + 
+p = ggplot(dat, aes(x = nr_events, y = score, color = method)) + geom_point(size=0.5) + geom_line(size=0.4) + 
   facet_wrap(~ dataset, ncol = 3, scales = "free") + ylab("MAE, days") + xlab("Prefix length")+
   theme(legend.position="top")+
     theme(panel.background = element_rect(fill = 'white', colour = 'black',size=0.5)) + 
@@ -209,8 +210,7 @@ p = ggplot(dat, aes(x = nr_events, y = score, color = method4)) + geom_point(siz
   theme(axis.text=element_text(colour="black"))+
   #scale_color_manual(values=c("black","red","blue","darkgreen","orange","darkblue","violet","gray"))+
   scale_colour_manual(values=cbPalette)
-
-#api_create(p, "flow-analysis-MAE-all", sharing = "public")
+api_create(p, "flow-analysis-MAE-all", sharing = "public")
 ```
 
 ```{r include=FALSE}
@@ -257,6 +257,7 @@ p=ggplot(dat_, aes(x=reorder(method, -Mean), y=Mean, fill=method, group=method))
 print(p)
 dev.off()
 embed_fonts("mean-ranking.pdf",outfile="mean-ranking.pdf")
+ggplotly(p)
 ```
 ```{r}
 dat$case_duration = 0
@@ -291,6 +292,7 @@ p=ggplot(dat_, aes(x=reorder(method, -Mean), y=Mean, fill=method, group=method))
 print(p)
 dev.off()
 embed_fonts("mean-ranking2.pdf",outfile="mean-ranking2.pdf")
+ggplotly(p)
 ```
 ```{r}
 dat_ = ddply(dat, .(method), summarize, Mean=mean(std))
@@ -307,6 +309,6 @@ p=ggplot(dat_, aes(x=reorder(method, -Mean), y=Mean, fill=method, group=method))
 print(p)
 dev.off()
 embed_fonts("mean-ranking3.pdf",outfile="mean-ranking3.pdf")
-
+ggplotly(p)
 ```
 
