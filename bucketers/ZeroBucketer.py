@@ -4,27 +4,21 @@ import pandas as pd
 import numpy as np
 import sys
 
-class ClusterBasedBucketer(object):
+class ZeroBucketer(object):
     
-    def __init__(self, encoder, clustering):
-        self.encoder = encoder
-        self.clustering = clustering
+    def __init__(self, case_id_col):
+        self.n_states = 1
+        self.case_id_col = case_id_col
         
     
     def fit(self, X, y=None):
-        
-        dt_encoded = self.encoder.fit_transform(X)
-        
-        self.clustering.fit(dt_encoded)
         
         return self
     
     
     def predict(self, X, y=None):
         
-        dt_encoded = self.encoder.transform(X)
-        
-        return self.clustering.predict(dt_encoded)
+        return np.ones(len(X[self.case_id_col].unique()), dtype=np.int)
     
     
     def fit_predict(self, X, y=None):

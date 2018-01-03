@@ -28,7 +28,7 @@ def add_remtime_column(group):
 for filename in filenames:
     print(filename)
     dtypes = {col: "str" for col in ["Resource", "article"]}
-    data = pd.read_csv(os.path.join(input_data_folder, filename), sep=";", dtype = dtypes)
+    data = pd.read_csv(os.path.join(input_data_folder, filename), sep=";", dtype=dtypes)
     #data = data.drop([columns_to_remove], axis=1)
     data[timestamp_col] = pd.to_datetime(data[timestamp_col])
     data = data.groupby(case_id_col).apply(add_remtime_column)

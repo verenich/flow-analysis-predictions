@@ -36,7 +36,7 @@ def extract_timestamp_features(group):
     
     tmp = group[timestamp_col] - group[timestamp_col].shift(-1)
     tmp = tmp.fillna(0)
-    group["duration"] = tmp.apply(lambda x: float(x / np.timedelta64(1, 'm'))) # m is for minutes
+    group["duration"] = tmp.apply(lambda x: float(x / np.timedelta64(1, 'm')))  # m is for minutes
     
     group["month"] = group[timestamp_col].dt.month
     group["weekday"] = group[timestamp_col].dt.weekday
@@ -49,7 +49,7 @@ for filename in filenames:
     data = pd.read_csv(os.path.join(input_data_folder,filename), sep=";")
 
     data.rename(columns=lambda x: x.replace('(case) ', ''), inplace=True)
-    data = data[data["caseStatus"] == "G"] # G is closed, O is open
+    data = data[data["caseStatus"] == "G"]  # G is closed, O is open
 
     # switch labels (deviant/regular was set incorrectly before)
     data = data.set_value(col=label_col, index=(data[label_col] == pos_label), value="normal")

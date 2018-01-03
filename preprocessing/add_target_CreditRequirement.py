@@ -10,7 +10,7 @@ from core.DatasetManager import DatasetManager
 script_name = os.path.basename(argv[0]).split(".")[0]
 dataset_ref = script_name.split("_", maxsplit=2)[-1]
 home_dirs = os.environ['PYTHONPATH'].split(":")
-home_dir = home_dirs[0] # if there are multiple PYTHONPATHs, choose the first
+home_dir = home_dirs[0]  # if there are multiple PYTHONPATHs, choose the first
 logs_dir = "logdata/"
 
 dataset_manager = DatasetManager(dataset_ref)
@@ -29,7 +29,7 @@ def add_cycle_times_gateway_classes(group):
         cycle_time = 0
         for regression_activity_id in regression_activity_ids:
             tmp = group.loc[regression_activity_id][dataset_manager.timestamp_col] - group.loc[regression_activity_id-1][dataset_manager.timestamp_col]
-            tmp = tmp / np.timedelta64(1, 's')
+            tmp /= np.timedelta64(1, 's')
             cycle_time = cycle_time + tmp
         group[regression_activity] = cycle_time / len(regression_activity_ids)  # if an activity is repeated multiple times, take an average of those
 

@@ -3,7 +3,7 @@ from numpy import array
 
 class ClassifierWrapper(object):
     
-    def __init__(self, cls, mode, min_cases_for_training = 30):
+    def __init__(self, cls, mode, min_cases_for_training=30):
         self.cls = cls
         
         self.min_cases_for_training = min_cases_for_training

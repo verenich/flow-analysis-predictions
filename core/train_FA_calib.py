@@ -25,7 +25,7 @@ optimization_type = argv[6]  # FA - each activity separately, FA2 - all together
 
 dataset_ref = os.path.splitext(train_file)[0]
 home_dirs = os.environ['PYTHONPATH'].split(":")
-home_dir = home_dirs[0] # if there are multiple PYTHONPATHs, choose the first
+home_dir = home_dirs[0]  # if there are multiple PYTHONPATHs, choose the first
 logs_dir = "logdata/"
 training_params_dir = "core/training_params/"
 results_dir = "results/validation/"
@@ -252,7 +252,7 @@ with open(outfile, 'w') as fout:
                 feature_combiner = pickle.load(f)
 
 
-            # get predicted cluster for each test case
+            # assign a bucket to each test case
             bucket_assignments_test = bucketer.predict(dt_test_nr_events)
 
             # use appropriate classifier for each bucket of test cases

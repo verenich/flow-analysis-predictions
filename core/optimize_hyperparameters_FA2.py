@@ -23,7 +23,7 @@ n_iter = int(argv[6])
 
 dataset_ref = os.path.splitext(train_file)[0]
 home_dirs = os.environ['PYTHONPATH'].split(":")
-home_dir = home_dirs[0] # if there are multiple PYTHONPATHs, choose the first
+home_dir = home_dirs[0]  # if there are multiple PYTHONPATHs, choose the first
 logs_dir = "logdata/"
 results_dir = "results/CV/"
 pickles_dir = "pkl/"
@@ -219,7 +219,7 @@ with open(outfile, 'w') as fout:
                     bucketer = pickle.load(f)
 
 
-                # get predicted cluster for each test case
+                # assign a bucket to each test case
                 bucket_assignments_test = bucketer.predict(dt_test_nr_events)
 
                 # use appropriate classifier for each bucket of test cases
@@ -307,7 +307,7 @@ with open(outfile, 'w') as fout:
 
 
             # extract actual label values
-            test_y = dataset_manager.get_label(dt_test_nr_events, label_col = "remtime")  # one row per case
+            test_y = dataset_manager.get_label(dt_test_nr_events, label_col="remtime")  # one row per case
             test_y = pd.DataFrame({dataset_manager.case_id_col: test_y.index, 'remtime': test_y.values})
             test_y[dataset_manager.case_id_col] = test_y[dataset_manager.case_id_col].apply(lambda x: x.split("_")[0])
             result = pd.merge(result, test_y, on=dataset_manager.case_id_col)

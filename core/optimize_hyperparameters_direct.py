@@ -25,7 +25,7 @@ mode = "regr"
 
 dataset_ref = os.path.splitext(train_file)[0]
 home_dirs = os.environ['PYTHONPATH'].split(":")
-home_dir = home_dirs[0] # if there are multiple PYTHONPATHs, choose the first
+home_dir = home_dirs[0]  # if there are multiple PYTHONPATHs, choose the first
 logs_dir = "logdata/"
 results_dir = "results/CV/"
 
@@ -82,7 +82,6 @@ with open(outfile, 'w') as fout:
 
     print(dt_train_prefixes.shape)
     print(dt_test_prefixes.shape)
-
 
     # extract arguments
     bucketer_args = {'encoding_method': bucket_encoding,
@@ -161,7 +160,7 @@ with open(outfile, 'w') as fout:
                 # evaluate on all prefixes
                 dt_test_nr_events = dt_test_prefixes.copy()
 
-            # get predicted cluster for each test case
+            # assign a bucket to each test case
             bucket_assignments_test = bucketer.predict(dt_test_nr_events)
 
             # use appropriate classifier for each bucket of test cases
@@ -189,7 +188,7 @@ with open(outfile, 'w') as fout:
                 preds.extend(preds_bucket)
 
                 # extract actual label values
-                test_y_bucket = dataset_manager.get_label(dt_test_bucket, label_col = label_col)  # one row per case
+                test_y_bucket = dataset_manager.get_label(dt_test_bucket, label_col=label_col)  # one row per case
                 test_y.extend(test_y_bucket)
 
             score = {}

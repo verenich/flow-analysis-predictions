@@ -24,7 +24,7 @@ n_iter = int(argv[6])
 
 dataset_ref = os.path.splitext(train_file)[0]
 home_dirs = os.environ['PYTHONPATH'].split(":")
-home_dir = home_dirs[0] # if there are multiple PYTHONPATHs, choose the first
+home_dir = home_dirs[0]  # if there are multiple PYTHONPATHs, choose the first
 logs_dir = "logdata/"
 results_dir = "results/CV/"
 
@@ -185,7 +185,7 @@ with open(outfile, 'w') as fout:
                     # evaluate on all prefixes
                     dt_test_nr_events = dt_test_prefixes.copy()
 
-                # get predicted cluster for each test case
+                # assign a bucket to each test case
                 bucket_assignments_test = bucketer.predict(dt_test_nr_events)
 
                 # use appropriate classifier for each bucket of test cases
@@ -247,7 +247,4 @@ with open(outfile, 'w') as fout:
 
                 cls_params_str = ";".join([str(params[param]) for param in cls_params_names])
 
-                fout.write("%s;%s;%s;%s;%s;%s;%s\n" % (
-                label_col, method_name, cls_method, cls_params_str, nr_events, list(score)[0], list(score.values())[0]))
-                # fout.write("%s;%s;%s;%s;%s;%s;%s\n" % (
-                # label_col, method_name, cls_method, cls_params_str, nr_events, list(score)[1], list(score.values())[1]))
+                fout.write("%s;%s;%s;%s;%s;%s;%s\n" % (label_col, method_name, cls_method, cls_params_str, nr_events, list(score)[0], list(score.values())[0]))

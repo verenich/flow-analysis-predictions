@@ -1,3 +1,6 @@
+library(reshape2)
+library(ggplot2)
+
 target = read.csv("target_hospital_billing_977.csv")
 
 regression_activities = c(
