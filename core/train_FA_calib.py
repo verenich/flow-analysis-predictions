@@ -16,7 +16,6 @@ import EncoderFactory
 from DatasetManager import DatasetManager
 
 train_file = argv[1]
-bucket_encoding = "agg"
 bucket_method = argv[2]
 cls_encoding = argv[3]
 cls_method = argv[4]
@@ -127,11 +126,7 @@ with open(outfile, 'w') as fout:
             print(dt_test_prefixes.shape)
 
             # extract arguments
-            bucketer_args = {'encoding_method': bucket_encoding,
-                             'case_id_col': dataset_manager.case_id_col,
-                             'cat_cols': [dataset_manager.activity_col],
-                             'num_cols': [],
-                             'random_state': random_state}
+            bucketer_args = {'case_id_col': dataset_manager.case_id_col}
 
             cls_encoder_args = {'case_id_col': dataset_manager.case_id_col,
                                 'static_cat_cols': dataset_manager.static_cat_cols,
@@ -360,10 +355,8 @@ with open(outfile, 'w') as fout:
             score["mae"] = mean_absolute_error(result["predicted"], result["remtime"])
             score["rmse"] = np.sqrt(mean_squared_error(result["predicted"], result["remtime"]))
 
-        fout.write("%s,%s,%s,%s,%s,%s,%s\n" % (dataset_ref, method_name, cls_method, nr_events,
-                                            list(score)[0], list(score.values())[0], len(result["remtime"])))
-        fout.write("%s,%s,%s,%s,%s,%s,%s\n" % (dataset_ref, method_name, cls_method, nr_events,
-                                            list(score)[1], list(score.values())[1], len(result["remtime"])))
+        for k, v in score.items():
+            fout.write("%s,%s,%s,%s,%s,%s,%s\n" % (dataset_ref, method_name, cls_method, nr_events, k, v, len(result["remtime"])))
 
     print("\n")
 
