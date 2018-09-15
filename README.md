@@ -1,37 +1,5 @@
-## Welcome to GitHub Pages
+Supplementary material for the manuscript ["Predicting process performance: A white-box approach"](https://eprints.qut.edu.au/117379/) by Ilya Verenich, [Marcello La Rosa](http://www.marcellolarosa.com/), [Marlon Dumas](http://kodu.ut.ee/~dumas/), Hoang Nguyen and Arthur ter Hofstede.
 
-You can use the [editor on GitHub](https://github.com/verenich/new-flow-analysis/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+The code provided in this repository can be used to train interpretable, process-model-based, models for the predictive monitoring of business processes.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/verenich/new-flow-analysis/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+The training and evaluation pipeline is summarized in [run_all_single.sh](https://github.com/verenich/new-flow-analysis/blob/master/run_all_single.sh) script.
